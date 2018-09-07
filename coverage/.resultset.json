@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/nicklindy/turing/2module/projects/bike_share/spec/features/station/visitor_sees_station_on_show_page_spec.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/station/visitor_sees_station_on_show_page_spec.rb": [
         1,
         null,
         1,
@@ -17,7 +17,33 @@
         null,
         null
       ],
-      "/Users/nicklindy/turing/2module/projects/bike_share/spec/models/station_spec.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/models/condition_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/condition.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/models/station_spec.rb": [
         1,
         null,
         1,
@@ -29,17 +55,12 @@
         null,
         null
       ],
-      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/station.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/station.rb": [
         1,
         1,
         null
       ],
-      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/nicklindy/turing/2module/projects/bike_share/app/controllers/stations_controller.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/app/controllers/stations_controller.rb": [
         1,
         1,
         1,
@@ -49,12 +70,12 @@
         null,
         null
       ],
-      "/Users/nicklindy/turing/2module/projects/bike_share/app/controllers/application_controller.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1536361442
+    "timestamp": 1536362434
   }
 }
