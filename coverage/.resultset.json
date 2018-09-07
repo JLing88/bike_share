@@ -1,7 +1,32 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/station/visitor_sees_station_on_show_page_spec.rb": [
+      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/stations/visitor_sees_all_stations_and_attributes_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/stations/visitor_sees_station_on_show_page_spec.rb": [
         1,
         null,
         1,
@@ -76,7 +101,6 @@
         null
       ]
     },
-    "timestamp": 1536362630
-
+    "timestamp": 1536364339
   }
 }
