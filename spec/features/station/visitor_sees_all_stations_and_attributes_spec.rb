@@ -9,11 +9,15 @@ describe 'as a visitor' do
       station_4 = Station.create!(name: 'Union', dock_count: 20, city: 'Denver', installation_date: Time.now)
 
       visit stations_path
-save_and_open_page
+
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
       expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_2.name)
+      expect(page).to have_content(station_2.dock_count)
+      expect(page).to have_content(station_2.city)
+      expect(page).to have_content(station_2.installation_date)
     end
   end
 end
