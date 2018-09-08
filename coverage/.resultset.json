@@ -30,7 +30,7 @@
         1,
         null,
         1,
-        1,
+        1,``«»
         1,
         1,
         null,
@@ -40,39 +40,28 @@
         null,
         null,
         null,
-        null
-      ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/models/condition_spec.rb": [
+        1,
+        1,
+        null,
         1,
         null,
         1,
         1,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
-        2,
+        1,
+        1,
+        null,
         null,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/condition.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/models/station_spec.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/spec/models/condition_spec.rb": [
         1,
         null,
         1,
         1,
+        2,
+        2,
+        2,
+        2,
         2,
         2,
         2,
@@ -80,7 +69,29 @@
         null,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/models/station.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/condition.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/nicklindy/turing/2module/projects/bike_share/spec/models/station_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/station.rb": [
         1,
         1,
         null
@@ -94,7 +105,7 @@
         null,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/controllers/application_controller.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/controllers/application_controller.rb": [
         1,
         1,
         null
