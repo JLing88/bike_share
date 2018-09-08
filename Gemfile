@@ -43,6 +43,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "simplecov"
   gem "database_cleaner"
+  gem 'friendly_id', '~> 5.2.0'
 end
 
 group :development do
