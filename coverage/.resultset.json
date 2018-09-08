@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/stations/visitor_sees_all_stations_and_attributes_spec.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/spec/features/stations/visitor_sees_all_stations_and_attributes_spec.rb": [
         1,
         null,
         1,
@@ -26,11 +26,11 @@
         null,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/spec/features/stations/visitor_sees_station_on_show_page_spec.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/spec/features/stations/visitor_sees_station_on_show_page_spec.rb": [
         1,
         null,
         1,
-        1,``«»
+        1,
         1,
         1,
         null,
@@ -96,7 +96,35 @@
         1,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/controllers/conditions_controller.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/spec/models/trip_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/models/trip.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/controllers/conditions_controller.rb": [
         1,
         1,
         1,
@@ -110,17 +138,18 @@
         1,
         null
       ],
-      "/Users/beccahyland/Turing/2module/projects/bike_share/app/controllers/stations_controller.rb": [
+      "/Users/nicklindy/turing/2module/projects/bike_share/app/controllers/stations_controller.rb": [
         1,
         1,
         1,
         null,
         null,
         1,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1536364797
+    "timestamp": 1536366684
   }
 }
