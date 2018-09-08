@@ -24,7 +24,7 @@ describe 'as a visitor' do
 
       visit(condition_path(condition_1))
 
-      expect(page).to have_content("Date: #{condition_1.date}")
+      expect(page).to have_content("Condition Date: #{condition_1.date}")
       expect(page).to have_content("Maximum Temperature: #{condition_1.max_temp}")
       expect(page).to have_content("Mean Temperature: #{condition_1.mean_temp}")
       expect(page).to have_content("Minimum Temperature: #{condition_1.min_temp}")
@@ -33,7 +33,7 @@ describe 'as a visitor' do
       expect(page).to have_content("Mean Windspeed: #{condition_1.mean_windspeed}")
       expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
 
-      expect(page).to_not have_content("Date: #{condition_2.date}")
+      expect(page).to_not have_content("Condition Date: #{condition_2.date}")
       expect(page).to_not have_content("Maximum Temperature: #{condition_2.max_temp}")
       expect(page).to_not have_content("Mean Temperature: #{condition_2.mean_temp}")
       expect(page).to_not have_content("Minimum Temperature: #{condition_2.min_temp}")
