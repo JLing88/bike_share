@@ -4,5 +4,6 @@ class StationsController < ApplicationController
   end
 
   def show
+    @station = Station.find_by('name = ?', params[:name])
   end
 end
