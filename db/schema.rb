@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180909185526) do
 
   # These are extensions that must be enabled in order to support this database
@@ -57,6 +58,13 @@ ActiveRecord::Schema.define(version: 20180909185526) do
     t.integer "bike_id"
     t.string "subscription_type"
     t.integer "zip_code"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
