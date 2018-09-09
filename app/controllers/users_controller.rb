@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash.error = "Username already taken"
+      flash[:notice] = "Username already taken"
       render :new
     end
   end
