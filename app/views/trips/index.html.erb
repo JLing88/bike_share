@@ -11,6 +11,8 @@
   <li>Bike Id: <%= t.bike_id %></li>
   <li>Subscription Type: <%= t.subscription_type %></li>
   <li>Zip Code: <%= t.zip_code %></li>
+  <li><%= link_to 'See Trip', trip_path(t) %></li>
+  
 </ul>
 <% end  %>
 

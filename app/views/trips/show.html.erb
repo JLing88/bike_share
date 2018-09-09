@@ -1,0 +1,11 @@
+
+  <h1>Trip: <%= @trip.id %></h1>
+  <li>Duration: <%= @trip.duration %></li>
+  <li>Start Date: <%= @trip.start_date %></li>
+  <li>Start Station Name: <%= @trip.start_station_name(@trip) %></li>
+  <li>End Date: <%= @trip.end_date %></li>
+  <li>End Station Name: <%= @trip.end_station_name(@trip) %></li>
+  <li>Bike Id: <%= @trip.bike_id %></li>
+  <li>Subscription Type: <%= @trip.subscription_type %></li>
+  <li>Zip Code: <%= @trip.zip_code %></li>
+  <p><%= link_to "<< Back to All Trips", trips_path %>
