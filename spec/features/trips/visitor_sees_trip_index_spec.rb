@@ -8,7 +8,7 @@ describe 'as visitor' do
       trip_2 = Trip.create!(duration: 50, start_date: Time.now, start_station_id: station_2.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 2, subscription_type: 'stolen', zip_code: 90210)
 
       visit trips_path
-save_and_open_page
+
       expect(page).to have_content(trip_1.duration)
       expect(page).to have_content(trip_1.start_date)
       expect(page).to have_content(trip_1.start_station_id)

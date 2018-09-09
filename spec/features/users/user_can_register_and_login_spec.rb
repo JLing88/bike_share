@@ -13,6 +13,9 @@ describe "As a visitor" do
 
       fill_in :user_username, with: username
       fill_in :user_password, with: "password"
+      fill_in :user_first_name, with: "Joe"
+      fill_in :user_last_name, with: "Schmoe"
+      fill_in :user_address, with: "111 Main St"
       click_on "Create User"
 
       expect(page).to have_content("Logged in as #{username}")
@@ -21,7 +24,7 @@ describe "As a visitor" do
 
     it 'blocks registration when username is not unique' do
       username = "Jesse"
-      User.create!(username: username, password: 'password')
+      User.create!(username: username, password: 'password', first_name: 'John', address: '1 Pennsylvania Avenue', last_name: 'Doe' )
 
       visit root_path
 
@@ -29,6 +32,9 @@ describe "As a visitor" do
 
       fill_in :user_username, with: username
       fill_in :user_password, with: "password"
+      fill_in :user_first_name, with: "Joe"
+      fill_in :user_last_name, with: "Schmoe"
+      fill_in :user_address, with: "111 Main St"
       click_on "Create User"
 
       expect(page).to_not have_content("Welcome, #{username}")
@@ -39,7 +45,7 @@ describe "As a visitor" do
 
   describe 'login' do
     it 'allows a registered user to login' do
-      user = User.create!(username: "Jesse", password: 'password')
+      user = User.create!(username: "Jesse", password: 'password', address: '123 Main St', first_name: 'Jesse', last_name: 'James')
 
       visit root_path
       click_on "Sign In"
@@ -58,6 +64,7 @@ describe "As a visitor" do
       expect(current_path).to eq(login_path)
       fill_in :username, with: "Pat"
       fill_in :password, with: "password"
+
       click_on "Log In"
 
       expect(current_path).to eq(login_path)
@@ -72,12 +79,17 @@ describe "As a visitor" do
 
       fill_in :user_username, with: "Pat"
       fill_in :user_password, with: "password"
+      fill_in :user_first_name, with: "Joe"
+      fill_in :user_last_name, with: "Schmoe"
+      fill_in :user_address, with: "111 Main St"
       click_on "Create User"
-    
+
       user = User.last
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content(user.username)
+      expect(page).to have_content(user.address)
+      expect(page).to have_content(user.name)
     end
   end
 end
