@@ -18,5 +18,6 @@ describe 'visitor is not logged in, cart is empty' do
     click_link 'My Cart'
 
     expect(page.body).to have_content('item 1')
+    expect(page.body).to have_content('widget')
   end
 end
