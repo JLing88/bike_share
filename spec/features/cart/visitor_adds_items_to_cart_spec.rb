@@ -7,21 +7,16 @@ describe 'visitor is not logged in, cart is empty' do
 
     visit item_path(item)
 
-    click_button 'Add To Cart'
+    click_button 'Add to Cart'
 
     expect(current_path).to eq(root_path)
 
     visit item_path(item_2)
 
-    click_button 'Add To Cart'
+    click_button 'Add to Cart'
 
     click_link 'My Cart'
 
-    within('name') do
-      expect(page.body).to have_content('item 1')
-    end
-    within('quantity') do
-      expect(page.body).to have_content(2)
-    end
+    expect(page.body).to have_content('item 1')
   end
 end
