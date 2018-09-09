@@ -41,6 +41,20 @@ describe "As a visitor" do
 
   describe 'login' do
     it 'allows a registered user to login' do
+      user = User.create!(username: "Jesse", password: 'password')
+
+      visit root_path
+      click_on "Sign In"
+      expect(current_path).to eq(login_path)
+      fill_in :username, with: user.username
+      fill_in :password, with: user.password
+      click_on "Log In"
+
+      expect(current_path).to eq(user_path(user))
+      expect(page).to have_content("Welcome, #{user.username}!")
+    end
+
+    it 'stops invalid users from logging in' do
 
     end
   end
