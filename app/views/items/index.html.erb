@@ -1,0 +1,10 @@
+<h1>Bike Accessories</h1>
+
+<% @items.each do |item| %>
+  <ul>
+    <li><%= link_to item.title, item_path(item)%></li>
+    <li><%= item.description %></li>
+    <li><%= item.price %></li>
+    <li><%= image_tag("#{item.image_url}" , size: "30")%></li>
+  </ul>
+<% end %>
