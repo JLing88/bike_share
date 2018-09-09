@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
-  resources :items, only: [:show]
+  resources :items, only: [:show, :index]
 
   post '/cart_items', to: 'cart_items#create'
   get '/cart', to: 'cart_items#index'
