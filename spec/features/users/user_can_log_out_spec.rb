@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a logged in registered user' do
   it 'allows them to log out' do
-    user = User.create!(username: "Pat", password: "test")
+    user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
 
     visit login_path
 
