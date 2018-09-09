@@ -6,5 +6,6 @@
     <li><%= item.description %></li>
     <li><%= item.price %></li>
     <li><%= image_tag("#{item.image_url}" , size: "30")%></li>
+    <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
   </ul>
 <% end %>

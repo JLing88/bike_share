@@ -3,5 +3,5 @@
 <ul>
   <li> Price: $<%= @item.price.round(2) %> </li>
   <li> Description: <%= @item.description %> </li>
-  <li> <%= button_to "Add to Cart", cart_items_path(item_id: @item.id) %> </li>
+  <li> <%= button_to "Add to Cart", cart_items_path(item_id: @item.id)%></li>
 </ul>
