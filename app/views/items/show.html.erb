@@ -1,0 +1,7 @@
+<h1>Item: <%= @item.title %></h1>
+
+<ul>
+  <li> Price: $<%= @item.price.round(2) %> </li>
+  <li> Description: <%= @item.description %> </li>
+  <li> <%= link_to "Add to Cart", item_path(@item) %>
+</ul>
