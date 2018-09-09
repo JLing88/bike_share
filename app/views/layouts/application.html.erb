@@ -16,6 +16,8 @@
       <p><%= "Logged in as #{current_user.username}" %>
       <p><%= link_to "Log Out", logout_path, method: :delete %></p>
     <% end %>
+    <p><%= link_to "My Cart", cart_path %></p>
+
     <p class="flash"><%= flash.notice %></p>
     <%= yield %>
   </body>

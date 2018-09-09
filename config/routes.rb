@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show]
 
+  post '/cart_items', to: 'cart_items#create'
+  get '/cart', to: 'cart_items#index'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   # get '/logout', to: "sessions#destroy"

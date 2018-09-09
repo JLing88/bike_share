@@ -1,0 +1,10 @@
+<table>
+  <th>Name</th>
+  <th>Quantity</th>
+  <% @cart_items.each do |cart_item| %>
+  <tr>
+    <td class="title-#{cart_item.id}"><%= cart_item.title %></td>
+    <td class="quantity-#{cart_item.id}"><%= cart_item.quantity %></td>
+  </tr>
+  <% end %>
+</table>
