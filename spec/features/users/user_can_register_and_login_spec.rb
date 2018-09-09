@@ -55,7 +55,16 @@ describe "As a visitor" do
     end
 
     it 'stops invalid users from logging in' do
+      visit root_path
+      click_on "Sign In"
+      expect(current_path).to eq(login_path)
+      fill_in :username, with: "Pat"
+      fill_in :password, with: "password"
+      click_on "Log In"
 
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Username and password do not match")
+      expect(page).to have_content("Sign In")
     end
   end
 end
