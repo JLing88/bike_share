@@ -1,11 +1,18 @@
 <table>
   <th>Name</th>
   <th>Quantity</th>
+  <th>Price</th>
+  <th>Image</th>
+  <th>Subtotal</th>
   <% @cart_items.each do |cart_item| %>
   <tr>
     <td class="title-#{cart_item.id}"><%= cart_item.title %></td>
     <td class="quantity-#{cart_item.id}"><%= cart_item.quantity %></td>
+    <td class="price-#{cart_item.id}"><%= (cart_item.price).round(2) %></td>
     <td class="image-#{cart_item.id}"><%= image_tag("#{cart_item.image_url}" , size: "30")%></td>
+    <td class="subtotal-#{cart_item.id}"><%= cart_item.subtotal(cart_item) %></td>
   </tr>
   <% end %>
 </table>
+
+<p><%= CartItem.total %></p>
