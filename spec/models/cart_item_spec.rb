@@ -13,4 +13,10 @@ describe CartItem do
 
     expect(cart_item.quantity).to eq(2)
   end
+  it 'displays the picture of the item' do
+    item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'test.jpg')
+    cart_item = CartItem.new(item, 2)
+
+    have_css("img[src*='item.jpg']")
+  end
 end
