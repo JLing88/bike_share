@@ -15,4 +15,7 @@ class CartItem < SimpleDelegator
   #     cart_item.subtotal(cart_item)
   #   end
   # end
+
+  # <!-- <p><%= CartItem.total %></p> -->
+
 end
