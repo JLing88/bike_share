@@ -9,8 +9,8 @@ require 'csv'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env == 'development' || Rails.env == 'production'
-
+Station.destroy_all
   CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do |row|
-    Station.create(name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+    Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
   end
 end
