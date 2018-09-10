@@ -16,4 +16,12 @@ class Cart
     data[item.id.to_s] ||= 0
     data[item.id.to_s] += 1
   end
+
+  def total
+    cart_items = items
+    result = cart_items.inject(0) do |sum, cart_item|
+      sum + cart_item.subtotal(cart_item)
+    end
+    result
+  end
 end
