@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :index]
 
   post '/cart_items', to: 'cart_items#create'
+  delete '/cart_items', to: 'cart_items#destroy'
   get '/cart', to: 'cart_items#index'
 
   get '/login', to: "sessions#new"
