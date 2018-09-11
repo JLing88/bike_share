@@ -17,10 +17,9 @@ describe 'users can remove a selected item from cart' do
       click_link 'My Cart'
       first(:button, 'Remove').click
 
-
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(item_2.title)
-      expect(page).to_not have_content(item.title)
+      expect(page).to have_link("#{item.title}")
 
     end
   end
