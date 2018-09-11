@@ -29,6 +29,7 @@ class CartItemsController < ApplicationController
     item = Item.find(params[:item_id])
     cart.remove_item(item.id)
     redirect_to cart_path
+    flash[:notice] = "#{item.title} removed from cart. Add it back in here:#{view_context.link_to(" #{item.title}", item_path(item))}"
 
   end
     # flash[:success] = "#{cart_item.title} has been deleted"

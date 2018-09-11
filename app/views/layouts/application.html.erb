@@ -47,7 +47,9 @@
     <% end %>
     <p><%= link_to "My Cart", cart_path %></p>
 
-    <p class="flash"><%= flash.notice %></p>
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message.html_safe, class: type %>
+    <% end %>
 
     <%= yield %>
     <!-- Optional JavaScript -->
