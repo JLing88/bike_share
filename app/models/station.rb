@@ -1,5 +1,5 @@
 class Station < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:finders, :slugged]
   validates_presence_of :name, :dock_count, :city, :installation_date
 end
