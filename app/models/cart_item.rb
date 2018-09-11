@@ -9,4 +9,8 @@ class CartItem < SimpleDelegator
     item.price * @quantity
   end
 
+  def increase
+    @quantity += 1
+  end
+
 end
