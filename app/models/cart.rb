@@ -17,6 +17,13 @@ class Cart
     data[item.id.to_s] += 1
   end
 
+  def decrease_item(item)
+    if data[item.id.to_s] > 1
+      data[item.id.to_s] ||= 0
+      data[item.id.to_s] -= 1
+    end
+  end
+
   def total
     cart_items = items
     result = cart_items.inject(0) do |sum, cart_item|
