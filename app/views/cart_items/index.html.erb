@@ -10,8 +10,8 @@
   <tr>
     <td class="title-#{cart_item.id}"><%= cart_item.title %></td>
     <td class="quantity-#{cart_item.id}"><%= cart_item.quantity %></td>
-    <td <button type="button" onclick="alert('Increased Quantity!')">+</button></td>
-    <td <button type="button" onclick="alert('Decreased Quantity!')">-</button></td>
+    <td class="increase_button-#{cart_item.id}"><%= button_to "+", "/cart_items/#{cart_item.id}/add" %></td>
+    <td class="increase_button-#{cart_item.id}"><%= button_to "-", "/cart_items/#{cart_item.id}/decrease" %></td>
     <td class="price-#{cart_item.id}"><%= (cart_item.price).round(2) %></td>
     <td class="image-#{cart_item.id}"><%= image_tag("#{cart_item.image_url}" , size: "30")%></td>
     <td class="subtotal-#{cart_item.id}"><%= cart_item.subtotal(cart_item) %></td>
