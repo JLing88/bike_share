@@ -9,10 +9,35 @@ require 'csv'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env == 'development' || Rails.env == 'production'
-Station.destroy_all
+  Station.destroy_all
   CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do |row|
     if row[:id] && row[:name] && row[:dock_count] && row[:city] && row[:installation_date]
-      Station.create!(id: row[:id], name: row[:name], dock_count: row[:dock_count], city: row[:city], installation_date: row[:installation_date])
+      Station.create!(
+        id: row[:id],
+        name: row[:name],
+        dock_count: row[:dock_count],
+        city: row[:city],
+        installation_date: Date.strptime(row[:installation_date], "%m/%d/%y")
+      )
     end
   end
+
+
+  Condition.destroy_all
+    CSV.foreach("db/csv/conditions.csv", headers: true, header_converters: :symbol) do |row|
+      if row[:date] && row[:max_temperature_f] && row[:mean_temperature_f] && row[:min_temperature_f] && row[:mean_humidity] && row[:mean_visibility_miles] && row[:mean_wind_speed_mph] && row[:precipitation_inches]
+        Condition.create(
+          date: Date.strptime(row[:date], "%m/%d/%y"),
+          max_temp: row[:max_temperature_f],
+          mean_temp: row[:mean_temperature_f],
+          min_temp: row[:min_temperature_f],
+          mean_humidity: row[:mean_humidity],
+          mean_visibility: row[:mean_visibility_miles],
+          mean_windspeed: row[:mean_wind_speed_mph],
+          precipitation: row[:precipitation_inches])
+      end
+    end
+  ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+  ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+  ActiveRecord::Base.connection.reset_pk_sequence!('conditions')
 end
