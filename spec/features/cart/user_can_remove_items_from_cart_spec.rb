@@ -21,6 +21,10 @@ describe 'users can remove a selected item from cart' do
       expect(page).to have_content(item_2.title)
       expect(page).to have_link("#{item.title}")
 
+      click_link("#{item.title}")
+      save_and_open_page
+      expect(current_path).to eq(item_path(item))
+
     end
   end
 end
