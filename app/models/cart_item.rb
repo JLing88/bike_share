@@ -9,8 +9,9 @@ class CartItem < SimpleDelegator
     item.price * @quantity
   end
 
-  def increase
-    @quantity += 1
+  def increase_item(item)
+    data[item.id.to_s] ||= 0
+    data[item.id.to_s] += 1
   end
 
 end
