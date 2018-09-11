@@ -12,7 +12,7 @@ class Cart
     end
   end
 
-  def increase_item(item)
+  def add_item(item)
     data[item.id.to_s] ||= 0
     data[item.id.to_s] += 1
   end
