@@ -12,6 +12,10 @@ class Cart
     end
   end
 
+  def remove_item(id)
+    data.delete(id.to_s)
+  end
+
   def add_item(item)
     data[item.id.to_s] ||= 0
     data[item.id.to_s] += 1
