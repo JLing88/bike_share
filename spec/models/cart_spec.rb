@@ -29,7 +29,7 @@ describe Cart do
   end
 
   context '#add_item' do
-    xit 'updates the data method when item is added' do
+    it 'updates the data method when item is added' do
       item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'test.jpg')
       cart = Cart.new(nil)
 
