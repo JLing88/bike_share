@@ -10,15 +10,17 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
+
   resources :items, only: [:show, :index]
+  get '/bike-store', to: 'items#index'
 
   post '/cart_items', to: 'cart_items#create'
-  delete '/cart_items', to: 'cart_items#destroy'
+  post 'cart_items/:id/add', to: 'cart_items#add_item'
+  post 'cart_items/:id/decrease', to: 'cart_items#decrease_item'
   get '/cart', to: 'cart_items#index'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
-  # get '/logout', to: "sessions#destroy"
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: "dashboard#show"
