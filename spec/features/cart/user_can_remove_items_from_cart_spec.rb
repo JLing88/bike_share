@@ -19,8 +19,8 @@ describe 'users can remove a selected item from cart' do
 
 
       expect(current_path).to eq(cart_path)
-      expect(page).to have_content(item_2.name)
-      expect(page).to_not have_content(item_1.name)
+      expect(page).to have_content(item_2.title)
+      expect(page).to_not have_content(item.title)
 
     end
   end
