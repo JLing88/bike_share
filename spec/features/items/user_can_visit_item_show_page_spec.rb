@@ -18,8 +18,6 @@ describe 'As a User' do
       visit item_path(item_1)
 
       expect(page).to have_button("Add to Cart")
-      #click_on "Add to Cart"
-      #expect(current_path).to eq(item_path(item_1))
     end
   end
 end

@@ -1,0 +1,8 @@
+<h1>Stations Dashboard</h1>
+
+<p>Total Stations: <%= @stations.count %></p>
+<p>Average Bike Count Per Station: <%= @avg_bike_count %></p>
+<p><%= @top_bike_station.name %> has <%= @top_dock_count %> bikes available.</p>
+<p><%= @low_bike_station.name %> has <%= @low_dock_count %> bikes available.</p>
+<p>Newest Station: <%= @newest_station.name %></p>
+<p>Oldest Station: <%= @oldest_station.name %></p>
