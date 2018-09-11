@@ -18,7 +18,7 @@ class Cart
   end
 
   def decrease_item(item)
-    if data[item.id.to_s] > 0
+    if data[item.id.to_s] > 1
       data[item.id.to_s] ||= 0
       data[item.id.to_s] -= 1
     end
