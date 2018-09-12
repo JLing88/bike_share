@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create]
 
   resources :trips, only: [:index, :show]
 
 
-  resources :items, only: [:show, :index]
+  resources :items, only: [:show]
   get '/bike-store', to: 'items#index'
 
   post '/cart_items', to: 'cart_items#create'

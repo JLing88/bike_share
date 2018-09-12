@@ -52,6 +52,12 @@ if Rails.env == 'development' || Rails.env == 'production'
         zip_code: row[:zip_code])
     end
   end
+
+  Item.destroy_all
+  20.times do |num|
+    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png'  )
+  end
+
   ActiveRecord::Base.connection.reset_pk_sequence!('stations')
   ActiveRecord::Base.connection.reset_pk_sequence!('trips')
   ActiveRecord::Base.connection.reset_pk_sequence!('conditions')

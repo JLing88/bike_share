@@ -16,7 +16,7 @@ describe 'As a visitor' do
       item_11 = Item.create(title: "Widget_11", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
       item_12 = Item.create(title: "Widget_12", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
 
-      visit items_path
+      visit bike_store_path
 
       expect(page).to have_content(item_1.title)
       expect(page).to have_content(item_2.title)

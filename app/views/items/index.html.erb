@@ -4,7 +4,7 @@
   <ul>
     <li><%= link_to item.title, item_path(item)%></li>
     <li><%= item.description %></li>
-    <li><%= item.price %></li>
+    <li><%= number_to_currency(item.price) %></li>
     <li><%= image_tag("#{item.image_url}" , size: "30")%></li>
     <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
   </ul>

@@ -8,8 +8,9 @@ describe 'users can checkout' do
   end
 
   context 'user is logged in' do
-    it 'allows user to checkout their cart' do
-
+    xit 'allows user to checkout their cart' do
+      user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit cart_path
 
       click_on 'Checkout'
@@ -18,8 +19,13 @@ describe 'users can checkout' do
     end
   end
   context 'user is not logged in' do
-    it 'prompts visitor to sign up or log in' do
+    xit 'prompts visitor to sign up or log in' do
 
-      expect
+      visit cart_path
+
+      click_on 'Checkout'
+
+
+    end
   end
 end
