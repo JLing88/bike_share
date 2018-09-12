@@ -9,4 +9,5 @@ class Station < ApplicationRecord
   def self.avg_bike_count
     Station.average(:dock_count)
   end
+
 end
