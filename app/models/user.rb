@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :orders
+
   validates :username, presence: true, uniqueness: true
   validates_presence_of :password
   validates_presence_of :address
@@ -12,6 +14,4 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-
-
 end
