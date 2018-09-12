@@ -18,4 +18,12 @@ class Trip < ApplicationRecord
   def end_station_name(trip)
     Station.find(trip.end_station_id).name
   end
+
+  def self.avg_ride_duration
+    Trip.average(:duration)
+  end
+
+  def self.longest_ride
+    Trip.where(duration: Trip.maximum(:duration)).first
+  end
 end
