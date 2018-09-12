@@ -56,6 +56,38 @@ describe Station, type: :model do
                             )
         expect(Trip.most_starting_trips).to eq(station_4)
       end
+      it 'returns the station with the most rides as an ending point' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'monthly',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        expect(Trip.most_ending_trips).to eq(station_3)
+      end
     end
   end
 end

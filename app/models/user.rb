@@ -9,8 +9,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  enum role: ["default", "admin"]
+
   def name
     "#{first_name} #{last_name}"
   end
-
 end
