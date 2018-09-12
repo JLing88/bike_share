@@ -1,0 +1,5 @@
+<h1>Trips Dashboard</h1>
+
+<p>Average Ride Duration: <%= @avg_duration %></p>
+<p>Longest Ride: <%= "Longest Ride: #{@longest_trip.duration} minutes from #{@longest_trip.start_station.name} to #{@longest_trip.end_station.name} on #{@longest_trip.start_date}" %></p>
+<p>Shortest Ride: <%= "Shortest Ride: #{@shortest_trip.duration} minutes from #{@shortest_trip.start_station.name} to #{@shortest_trip.end_station.name} on #{@shortest_trip.start_date}" %></p>
