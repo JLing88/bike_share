@@ -18,4 +18,8 @@ class Trip < ApplicationRecord
   def end_station_name(trip)
     Station.find(trip.end_station_id).name
   end
+
+  def self.avg_ride_duration
+    
+  end
 end
