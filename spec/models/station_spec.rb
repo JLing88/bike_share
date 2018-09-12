@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe Station, type: :model do
+
+  describe 'relationships' do
+   it { is_expected.to have_many(:start_trips) }
+   it { is_expected.to have_many(:end_trips) }
+  end
+
   describe 'validations' do
     it {should validate_presence_of :name}
     it {should validate_presence_of :dock_count}
