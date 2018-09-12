@@ -30,16 +30,15 @@ describe "User visits stations index" do
     end
   end
 
-  # context "as a default user" do
-  #   it "does not allow default user to see edit or delete buttons per station" do
-  #     user = User.create!(username: "notBoss", password: "444444", first_name: "firstname", last_name: "lastname", address: "place")
-  #
-  #     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-  #
-  #     visit admin_stations_path
-  #
-  #     expect(page).to have_button("Edit")
-  #     expect(page).to have_button("Delete")
-  #   end
-  # end
+  context "as a default user" do
+    it "does not allow default user to see edit or delete buttons per station" do
+      user = User.create!(username: "notBoss", password: "444444", first_name: "firstname", last_name: "lastname", address: "place")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit admin_stations_path
+
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+  end
 end
