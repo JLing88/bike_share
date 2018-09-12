@@ -35,11 +35,7 @@ describe 'As an admin' do
         end
         expect(page).to_not have_content(trip_1.start_station.name)
         expect(page).to have_content(trip_2.start_station.name)
-
-
-      end
-
-      it 'displays a flash message that the trip was deleted' do
+        expect(page).to have_content("Trip #{trip_1.id} has been destroyed!")
       end
     end
   end
