@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe "User visits stations index" do
   context "as an admin" do
-    before(:each) do
+
+    it "has edit and delete buttons per station" do
+
       @station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
       @station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
       @station_3 = Station.create!(name: 'Ward', dock_count: 25, city: 'Arvada', installation_date: Time.now)
@@ -13,10 +15,6 @@ describe "User visits stations index" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
       visit admin_stations_path
-
-    end
-
-    it "has edit and delete buttons per station" do
 
       expect(page).to have_content(@station_1.name)
       expect(page).to have_content(@station_1.dock_count)
@@ -29,6 +27,21 @@ describe "User visits stations index" do
 
       expect(page).to have_link("Edit")
       expect(page).to have_link("Delete")
+
+    end
+
+    it 'allows admin to delete a station' do
+      @station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+
+      @admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+
+      visit admin_stations_path
+
+      click_on "Delete"
+
+      expect(page).to_not have_content("Wads")
 
     end
   end
