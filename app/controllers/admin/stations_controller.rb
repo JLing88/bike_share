@@ -3,6 +3,10 @@ class Admin::StationsController < Admin::BaseController
     @stations = Station.all
   end
 
+  def show
+    @station = Station.find(params[:id])
+  end
+
   def destroy
     station = Station.find(params[:id])
     station.destroy
