@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe Trip, type: :model do
+
+  context 'relationships' do
+    it {is_expected.to belong_to(:start_station)}
+    it {is_expected.to belong_to(:end_station)}
+  end
+
   context 'validations' do
     it {should validate_presence_of :duration}
     it {should validate_presence_of :start_date}
