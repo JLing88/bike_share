@@ -22,7 +22,7 @@ describe "User visits stations show" do
 
     end
 
-    it 'allows admin to delete a station' do
+    it 'allows admin to delete a station from station index' do
       @station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
 
       @admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
