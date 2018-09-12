@@ -40,9 +40,20 @@ describe 'visitor is not logged in, cart is empty' do
     click_button '+'
 
     expect(page.body).to have_content(2)
-    
+
     click_on '-'
 
     expect(page.body).to have_content(1)
+  end
+
+  it 'visitor sees checkout button on cart' do
+    item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+    item_2 = Item.create(title: 'widget', description: 'neat', price: 333, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+
+    visit item_path(item)
+
+    click_link 'My Cart'
+
+    expect(page).to have_button("Checkout")
   end
 end
