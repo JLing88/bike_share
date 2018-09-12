@@ -18,4 +18,25 @@ class Trip < ApplicationRecord
   def end_station_name(trip)
     Station.find(trip.end_station_id).name
   end
+
+  def self.avg_ride_duration
+    Trip.average(:duration)
+  end
+
+  def self.longest_trip
+    Trip.where(duration: Trip.maximum(:duration)).limit(1).first
+  end
+
+  def self.shortest_trip
+    Trip.where(duration: Trip.minimum(:duration)).limit(1).first
+  end
+
+  def self.most_starting_trips
+  var =   Station.joins("join trips on stations.id = trips.start_station_id")
+    .order("count_all desc")
+    .limit(1)
+    .group(:id)
+    .count
+    Station.find(var.values.first)
+  end
 end
