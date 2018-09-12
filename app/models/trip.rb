@@ -23,7 +23,11 @@ class Trip < ApplicationRecord
     Trip.average(:duration)
   end
 
-  def self.longest_ride
+  def self.longest_trip
     Trip.where(duration: Trip.maximum(:duration)).first
+  end
+
+  def self.shortest_trip
+    Trip.where(duration: Trip.minimum(:duration)).first
   end
 end

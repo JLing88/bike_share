@@ -72,6 +72,7 @@ describe "As a registered user" do
       visit trips_dashboard_path
 
       expect(page).to have_content("Longest Ride: #{trip_1.duration} minutes from #{trip_1.start_station.name} to #{trip_1.end_station.name} on #{trip_1.start_date}")
+      expect(page).to have_content("Shortest Ride: #{trip_2.duration} minutes from #{trip_2.start_station.name} to #{trip_2.end_station.name} on #{trip_2.start_date}")
     end
   end
 end

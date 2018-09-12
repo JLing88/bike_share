@@ -68,7 +68,7 @@ describe Trip, type: :model do
       expect(Trip.avg_ride_duration).to eq(55)
     end
 
-    it '.longest_ride' do
+    it '.longest_trip and .shortest trip' do
       station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
       station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
       trip_1 = Trip.create!(duration: 60,
@@ -99,7 +99,8 @@ describe Trip, type: :model do
                             zip_code: 90210
                           )
 
-      expect(Trip.longest_ride).to eq(trip_1)
+      expect(Trip.longest_trip).to eq(trip_1)
+      expect(Trip.shortest_trip).to eq(trip_2)
     end
   end
 end
