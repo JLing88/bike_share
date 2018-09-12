@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'stations#index'
-  #root path needs to change
+  root 'welcome#index'
+
   resources :stations, only: [:index, :show]
 
   resources :conditions, only: [:index, :show]
@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+  get '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: "dashboard#show"
   get '/stations-dashboard', to: "stations_dashboard#show"
 
   get '/:id', to: 'stations#show'
+
 end

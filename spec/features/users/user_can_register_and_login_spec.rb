@@ -13,7 +13,7 @@ describe "As a visitor" do
 
       fill_in :user_username, with: username
       fill_in :user_password, with: "password"
-      fill_in :user_first_name, with: "Joe"
+      fill_in :user_first_name, with: username
       fill_in :user_last_name, with: "Schmoe"
       fill_in :user_address, with: "111 Main St"
       click_on "Create User"
@@ -32,7 +32,7 @@ describe "As a visitor" do
 
       fill_in :user_username, with: username
       fill_in :user_password, with: "password"
-      fill_in :user_first_name, with: "Joe"
+      fill_in :user_first_name, with: username
       fill_in :user_last_name, with: "Schmoe"
       fill_in :user_address, with: "111 Main St"
       click_on "Create User"

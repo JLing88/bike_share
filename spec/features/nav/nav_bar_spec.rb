@@ -6,7 +6,7 @@ describe 'A user can interact with the nav bar' do
 
       visit root_path
 
-      click_on("Bike-Share")
+      click_on("BikeShare")
 
       expect(current_path).to eq(root_path)
 
