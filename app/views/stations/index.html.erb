@@ -1,10 +1,10 @@
 <h1>All Stations</h1>
 
 <% @stations.each do |station|  %>
-  <ul>
-    <h3><%= station.name%></h3>
-      <li>Dock Count: <%= station.dock_count %></li>
-      <li>City: <%= station.city %></li>
-      <li>Installation Date: <%= station.installation_date %></li>
-  </ul>
-  <% end %>
+    <ul>
+      <h3> <%= link_to "#{station.name}", station_path(station) %></h3>
+        <li>Dock Count: <%= station.dock_count %></li>
+        <li>City: <%= station.city %></li>
+        <li>Installation Date: <%= station.installation_date %></li>
+    </ul>
+<% end %>
