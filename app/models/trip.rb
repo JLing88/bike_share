@@ -32,11 +32,11 @@ class Trip < ApplicationRecord
   end
 
   def self.most_starting_trips
-  var =   Station.joins("join trips on stations.id = trips.start_station_id")
-    .order("count_all desc")
-    .limit(1)
-    .group(:id)
-    .count
-    Station.find(var.values.first)
+    var = Station.joins("join trips on stations.id = trips.start_station_id")
+      .order("count_all desc")
+      .limit(1)
+      .group(:id)
+      .count
+    Station.find(var.keys.first)
   end
 end
