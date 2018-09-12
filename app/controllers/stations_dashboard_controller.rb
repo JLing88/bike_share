@@ -1,4 +1,5 @@
 class StationsDashboardController < ApplicationController
+  before_action :require_user
   def show
     @stations = Station.all
     @avg_bike_count = Station.avg_bike_count

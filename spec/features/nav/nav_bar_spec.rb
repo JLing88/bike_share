@@ -24,7 +24,7 @@ describe 'A user can interact with the nav bar' do
 
       click_on("Accessories")
 
-      expect(current_path).to eq(items_path)
+      expect(current_path).to eq(bike_store_path)
     end
   end
 end
