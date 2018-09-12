@@ -39,9 +39,13 @@ describe "User visits stations index" do
 
       visit admin_stations_path
 
+      expect(page).to have_content("Wads")
+      save_and_open_page
       click_on "Delete"
+      save_and_open_page
 
       expect(page).to_not have_content("Wads")
+      expect(page).to have_content("Station deleted.")
 
     end
   end
