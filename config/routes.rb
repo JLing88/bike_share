@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :stations, only: [:index, :show, :edit, :destroy]
+    resources :trips, only: [:index, :show, :edit, :destroy]
   end
 
   resources :items, only: [:show]
