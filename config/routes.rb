@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
+  namespace :admin do
+    resources :stations, only: [:index, :show, :edit, :destroy]
+  end
 
   resources :items, only: [:show]
   get '/bike-store', to: 'items#index'
