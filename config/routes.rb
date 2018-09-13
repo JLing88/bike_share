@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
 
   namespace :admin do
-    resources :stations, only: [:index, :show, :edit, :destroy]
+    resources :stations, only: [:new, :create, :index, :show, :edit, :destroy]
     resources :trips, only: [:index, :show, :edit, :destroy]
   end
 
