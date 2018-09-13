@@ -1,0 +1,39 @@
+<div class='form'>
+  <%= form_for [:admin, @condition] do |f| %>
+    <div>
+    <%= f.label :date%>
+    <%= f.text_field :date %>
+    </div>
+    <div>
+    <%= f.label :max_temp %>
+    <%= f.number_field :max_temp %>
+    </div>
+    <div>
+    <%= f.label :mean_temp %>
+    <%= f.number_field :mean_temp %>
+    </div>
+    <div>
+    <%= f.label :min_temp %>
+    <%= f.number_field :min_temp %>
+    </div>
+    <div>
+    <%= f.label :mean_humidity %>
+    <%= f.number_field :mean_humidity %>
+    </div>
+    <div>
+    <%= f.label :mean_visibility %>
+    <%= f.number_field :mean_visibility %>
+    </div>
+    <div>
+    <%= f.label :mean_windspeed %>
+    <%= f.number_field :mean_windspeed %>
+    </div>
+    <div>
+    <%= f.label :precipitation %>
+    <%= f.number_field :precipitation %>
+    </div>
+    <div>
+    <%= f.submit %>
+    </div>
+  <% end %>
+</div>
