@@ -10,7 +10,9 @@
     <li>Mean Visibility: <%= c.mean_visibility%></li>
     <li>Mean Windspeed: <%= c.mean_windspeed%></li>
     <li>Precipitation: <%= c.precipitation%></li>
+    <% if current_admin? %>
     <li><%= link_to "Edit", edit_admin_condition_path(c) %></li>
     <li><%= link_to "Delete", admin_condition_path(c), method: "delete" %></li>
+    <% end %>
   </ul>
 <% end %>
