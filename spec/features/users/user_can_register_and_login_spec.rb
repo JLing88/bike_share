@@ -17,7 +17,7 @@ describe "As a visitor" do
       fill_in :user_address, with: "111 Main St"
       click_on "Create User"
 
-      expect(page).to have_content("Logged in as #{username}")
+      expect(page).to have_content("Logged in as: #{username}")
       expect(current_path).to eq(dashboard_path)
     end
 
@@ -54,7 +54,7 @@ describe "As a visitor" do
       click_on "Log In"
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Logged in as #{user.username}")
+      expect(page).to have_content("Logged in as: #{user.username}")
     end
 
     it 'stops invalid users from logging in' do
