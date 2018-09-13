@@ -6,7 +6,7 @@
 
 <% @conditions.each do |c| %>
   <ul>
-    <h3> <%= link_to "#{c.date}", condition_path(c) %></h3>
+    <h3><%= link_to "Date: #{c.date}", condition_path(c) %></h3>
     <li>Maximum Temperature: <%= c.max_temp%></li>
     <li>Mean Temperature: <%= c.mean_temp%></li>
     <li>Minimum Temperature: <%= c.min_temp%></li>
