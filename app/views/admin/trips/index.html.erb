@@ -13,7 +13,7 @@
   <li>Zip Code: <%= t.zip_code %></li>
   <li><%= link_to 'See Trip', admin_trip_path(t) %></li>
   <li class="trip-<%= t.id %>"><%= link_to "Delete", admin_trip_path(t), method: "delete" %></li>
-  <li class="trip-<%= t.id %>"><%= link_to "Edit", edit_admin_trip_path(t) %></li>
+  <li><%= link_to "Edit", edit_admin_trip_path(t) %></li>
 </ul>
 <% end  %>
 
