@@ -1,7 +1,7 @@
 <h1>Item: <%= @item.title %></h1>
 
 <ul>
-  <li><img src=<%= @item.image_url %> class="img-fluid" alt="Responsive image"></li>
+  <li><%= image_tag("#{@item.image_url}" , size: "200")%></li>
   <li> Price: $<%= @item.price.round(2) %> </li>
   <li> Description: <%= @item.description %> </li>
   <li> <%= button_to "Add to Cart", cart_items_path(item_id: @item.id)%></li>
