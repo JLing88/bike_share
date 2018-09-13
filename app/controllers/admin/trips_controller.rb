@@ -3,6 +3,10 @@ class Admin::TripsController < Admin::BaseController
     @trips = Trip.page(params[:page]).per(30)
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
