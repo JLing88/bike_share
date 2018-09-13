@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a User' do
   context 'they can see a single item' do
     it 'displays item information on show page' do
-      item_1 = Item.create(title: "Widget", description: "Something Sweet", price: 1.99, image_url: "123.com")
+      item_1 = Item.create(title: "Widget", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
 
       visit item_path(item_1)
 
@@ -13,7 +13,7 @@ describe 'As a User' do
     end
 
     it 'shows Add to Cart button' do
-      item_1 = Item.create(title: "Widget", description: "Something Sweet", price: 1.99, image_url: "123.com")
+      item_1 = Item.create(title: "Widget", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
 
       visit item_path(item_1)
 
