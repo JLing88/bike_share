@@ -27,7 +27,7 @@ describe "User visits conditions edit" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit edit_admin_condition_path(condition_2)
-      save_and_open_page
+
       fill_in :condition_date, with: DateTime.parse('2018-05-19')
       fill_in :condition_max_temp, with: 500.00
       fill_in :condition_mean_temp, with: 99.00
