@@ -11,11 +11,10 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
 
   namespace :admin do
+    resources :stations, only: [:index, :show, :edit, :destroy]
+    resources :conditions, only: [:edit, :destroy, :new, :create, :update]
+    resources :trips, only: [:index, :show, :edit, :update, :destroy]
 
-    resources :stations
-    resources :conditions, only: [:edit, :destroy, :new, :create, :update, :index, :show]
-
-    resources :trips, only: [:index, :show, :edit, :destroy]
   end
 
   resources :items, only: [:show]
