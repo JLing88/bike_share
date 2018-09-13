@@ -24,6 +24,7 @@ describe "As an admin they visit the trip_index_path" do
         click_on "Create"
         trip = Trip.last
         expect(current_path).to eq(trip_path(trip))
+        expect(page).to have_content("created successfully")
         expect(page).to have_content("Start Station Name: Wads")
         expect(page).to have_content("End Station Name: Wads")
         expect(page).to have_content("Bike Id: 234")
