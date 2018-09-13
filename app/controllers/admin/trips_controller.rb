@@ -30,6 +30,20 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def new
+    @trip = Trip.new
+  end
+
+  def create
+    @trip = Trip.new(admin_trip_params)
+    if @trip.save
+      flash[:success] = "#{@trip.id} created successfully"
+      redirect_to trip_path(@trip)
+    else
+      flash[:notice] = "Could not create trip"
+      render :new
+    end
+  end
   private
 
   def admin_trip_params
