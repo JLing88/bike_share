@@ -41,7 +41,7 @@ describe 'as a visitor' do
       expect(page).to have_content("Mean Windspeed: #{condition_1.mean_windspeed}")
       expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
 
-      expect(page).to have_content("Date: #{condition_2.date}")
+      expect(page).to have_link("#{condition_2.date}")
       expect(page).to have_content("Maximum Temperature: #{condition_2.max_temp}")
       expect(page).to have_content("Mean Temperature: #{condition_2.mean_temp}")
       expect(page).to have_content("Minimum Temperature: #{condition_2.min_temp}")
@@ -50,7 +50,7 @@ describe 'as a visitor' do
       expect(page).to have_content("Mean Windspeed: #{condition_2.mean_windspeed}")
       expect(page).to have_content("Precipitation: #{condition_2.precipitation}")
 
-      expect(page).to have_content("Date: #{condition_3.date}")
+      expect(page).to have_link("#{condition_3.date}")
       expect(page).to have_content("Maximum Temperature: #{condition_3.max_temp}")
       expect(page).to have_content("Mean Temperature: #{condition_3.mean_temp}")
       expect(page).to have_content("Minimum Temperature: #{condition_3.min_temp}")
@@ -59,6 +59,31 @@ describe 'as a visitor' do
       expect(page).to have_content("Mean Windspeed: #{condition_3.mean_windspeed}")
       expect(page).to have_content("Precipitation: #{condition_3.precipitation}")
 
+    end
+  end
+end
+
+describe 'as a visitor' do
+  context 'they visit conditions index' do
+    it 'should list all conditions with attributes' do
+      condition_1 = Condition.create!(date: DateTime.parse('2018-8-29'),
+                                      max_temp: 12.0,
+                                      mean_temp: 55.0,
+                                      min_temp:1.0,
+                                      mean_humidity: 30.0,
+                                      mean_visibility: 3.0,
+                                      mean_windspeed: 10.0,
+                                      precipitation: 2.0
+                                    )
+      visit conditions_path
+
+      click_link '2018-08-29'
+
+      expect(current_path).to eq(condition_path(condition_1))
+
+      click_link "<< Back to All Conditions"
+
+      expect(current_path).to eq(conditions_path)
     end
   end
 end
