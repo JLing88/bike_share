@@ -1,0 +1,26 @@
+<div class='form'>
+  <%= form_for [:admin, @station] do |f| %>
+    <div>
+    <%= f.label :name%>
+    <%= f.text_field :name %>
+    </div>
+    <div>
+    <%= f.label :dock_count %>
+    <%= f.number_field :dock_count %>
+    </div>
+    <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    </div>
+    <div>
+    <%= f.label :installation_date %>
+    <%= f.date_field :installation_date %>
+    </div>
+    <div>
+    <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+
+<h5><%= link_to "<< Back to All Stations", admin_stations_path %></h5>
