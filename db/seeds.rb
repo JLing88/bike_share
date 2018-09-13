@@ -55,7 +55,7 @@ if Rails.env == 'development' || Rails.env == 'production'
 
   Item.destroy_all
   20.times do |num|
-    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png'  )
+    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: 'https://static1.squarespace.com/static/548f8051e4b0155e1e517029/56ec47608259b54cf1f12c09/56ec47608259b54cf1f12c0a/1458325348859/6_BeerHolder+black.jpg'  )
   end
 
   ActiveRecord::Base.connection.reset_pk_sequence!('stations')
