@@ -48,4 +48,8 @@ class Trip < ApplicationRecord
     .count
     Station.find(var.keys.first)
   end
+
+  def self.most_ridden_bike
+    select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count desc').first.bike_id
+  end
 end
