@@ -1,6 +1,8 @@
 <h1>All Stations</h1>
 <h2>Admin View</h2>
 
+<%= link_to "Add New Station", new_admin_station_path %>
+
 <% @stations.each do |station|  %>
   <ul>
     <h3> <%= link_to "#{station.name}", admin_station_path(station) %></h3>
