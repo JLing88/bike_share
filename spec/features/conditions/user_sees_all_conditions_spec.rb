@@ -32,7 +32,7 @@ describe 'as a visitor' do
                                     )
       visit conditions_path
 
-      expect(page).to have_content("Date: #{condition_1.date}")
+      expect(page).to have_link("Date: #{condition_1.date}")
       expect(page).to have_content("Maximum Temperature: #{condition_1.max_temp}")
       expect(page).to have_content("Mean Temperature: #{condition_1.mean_temp}")
       expect(page).to have_content("Minimum Temperature: #{condition_1.min_temp}")

@@ -15,7 +15,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:success] = "You have successfully added weather data for #{@condition.date}"
       redirect_to condition_path(@condition)
     else
-      flash[:notice] = "Date not propperly added"
+      flash[:notice] = "Condition not added"
       render :new
     end
   end
@@ -31,7 +31,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:success] = "You have successfully updated weather for #{@condition.date}"
       redirect_to condition_path(@condition)
     else
-      flash[:notice] = 'Condition not propperly updated'
+      flash[:notice] = 'Condition not updated'
       render :edit
     end
   end
