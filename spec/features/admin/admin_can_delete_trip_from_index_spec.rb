@@ -30,7 +30,7 @@ describe 'As an admin' do
 
         expect(page).to have_content(trip_1.start_station.name)
         expect(page).to have_content(trip_2.start_station.name)
-        within(".trip-#{trip_1.id}") do
+        within(".trip-#{trip_1.id}-delete") do
             click_link "Delete"
         end
         expect(page).to_not have_content(trip_1.start_station.name)
