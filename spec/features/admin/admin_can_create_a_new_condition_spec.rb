@@ -23,7 +23,7 @@ describe "User visits condition new" do
 
       condition = Condition.find_by(max_temp: 500.00)
 
-      expect(current_path).to eq(admin_condition_path(condition))
+      expect(current_path).to eq(condition_path(condition))
 
       expect(page).to have_content("Maximum Temperature: 500.0")
       expect(page).to have_content("Mean Temperature: 99.0")

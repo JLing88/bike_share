@@ -18,8 +18,10 @@ describe 'As an admin' do
                               zip_code: 80222
                             )
 
-        visit admin_trip_path(trip_1)
+        visit trip_path(trip_1)
+
         click_link "Edit"
+
         expect(current_path).to eq(edit_admin_trip_path(trip_1))
 
         date = "2017-8-29"
@@ -31,8 +33,10 @@ describe 'As an admin' do
         fill_in :trip_subscription_type, with: 'weekly'
         fill_in :trip_bike_id, with: 377
         fill_in :trip_zip_code, with: 94040
+
         click_on "Update"
-        expect(current_path).to eq(admin_trip_path(trip_1))
+
+        expect(current_path).to eq(trip_path(trip_1))
         expect(page).to have_content("Duration: 50")
         expect(page).to have_content("Start Station Name: Denver")
         expect(page).to have_content("End Station Name: Denver")

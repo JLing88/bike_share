@@ -18,7 +18,7 @@ describe 'user edit station' do
 
       click_button "Update Station"
 
-      expect(current_path).to eq(admin_station_path(Station.last))
+      expect(current_path).to eq(station_path(Station.last))
       expect(page).to have_content("Edited_Station")
       expect(page).to have_content("12")
       expect(page).to have_content("Edited_City")

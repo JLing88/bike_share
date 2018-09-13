@@ -11,7 +11,7 @@ class Admin::TripsController < Admin::BaseController
     @trip = Trip.find(params[:id])
     @trip.destroy
     flash[:notice] = "Trip #{@trip.id} has been destroyed!"
-    redirect_to admin_trips_path
+    redirect_to trips_path
   end
 
   def edit
@@ -23,7 +23,7 @@ class Admin::TripsController < Admin::BaseController
     @trip.update(admin_trip_params)
     if @trip.save
       flash[:success] = "You have successfully updated trip #{@trip.id}"
-      redirect_to admin_trip_path(@trip)
+      redirect_to trip_path(@trip)
     else
       flash[:notice] = 'Trip not properly updated'
       render :edit

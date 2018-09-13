@@ -17,7 +17,7 @@ if Rails.env == 'development' || Rails.env == 'production'
         name: row[:name],
         dock_count: row[:dock_count],
         city: row[:city],
-        installation_date: Date.strptime(row[:installation_date], "%m/%d/%y")
+        installation_date: Date.strptime(row[:installation_date], "%m/%d/%Y")
       )
     end
   end
@@ -27,7 +27,7 @@ if Rails.env == 'development' || Rails.env == 'production'
   CSV.foreach("db/csv/conditions.csv", headers: true, header_converters: :symbol) do |row|
     if row[:date] && row[:max_temperature_f] && row[:mean_temperature_f] && row[:min_temperature_f] && row[:mean_humidity] && row[:mean_visibility_miles] && row[:mean_wind_speed_mph] && row[:precipitation_inches]
       Condition.create(
-        date: Date.strptime(row[:date], "%m/%d/%y"),
+        date: Date.strptime(row[:date], "%m/%d/%Y"),
         max_temp: row[:max_temperature_f],
         mean_temp: row[:mean_temperature_f],
         min_temp: row[:min_temperature_f],
@@ -43,9 +43,9 @@ if Rails.env == 'development' || Rails.env == 'production'
     if row[:duration] && row[:start_date] && row[:start_station_id] && row[:end_date] && row[:end_station_id] && row[:bike_id] && row[:subscription_type] && row[:zip_code]
       Trip.create(
         duration: row[:duration],
-        start_date: Date.strptime(row[:start_date], "%m/%d/%y"),
+        start_date: Date.strptime(row[:start_date], "%m/%d/%Y"),
         start_station_id: row[:start_station_id],
-        end_date: Date.strptime(row[:end_date], "%m/%d/%y"),
+        end_date: Date.strptime(row[:end_date], "%m/%d/%Y"),
         end_station_id: row[:end_station_id],
         bike_id: row[:bike_id],
         subscription_type: row[:subscription_type],

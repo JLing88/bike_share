@@ -26,7 +26,7 @@ describe 'As an admin' do
                             zip_code: 90210
                           )
 
-      visit admin_trip_path(trip_1)
+      visit trip_path(trip_1)
 
       expect(page).to have_link("Edit")
       expect(page).to have_link("Delete")

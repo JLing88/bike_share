@@ -7,7 +7,7 @@ describe 'user creates new station' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-      visit admin_stations_path
+      visit stations_path
 
       click_on "Add New Station"
 
@@ -20,7 +20,7 @@ describe 'user creates new station' do
 
       click_button "Create Station"
 
-      expect(current_path).to eq(admin_station_path(Station.last))
+      expect(current_path).to eq(station_path(Station.last))
       expect(page).to have_content("New_Station")
       expect(page).to have_content("12")
       expect(page).to have_content("New_City")

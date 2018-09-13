@@ -1,7 +1,4 @@
 class Admin::StationsController < Admin::BaseController
-  def index
-    @stations = Station.all
-  end
 
   def show
     @station = Station.find(params[:id])
@@ -15,7 +12,7 @@ class Admin::StationsController < Admin::BaseController
     @station = Station.create(station_params)
     if @station.save
       flash[:notice] = "You created #{@station.name} Station"
-      redirect_to admin_station_path(@station)
+      redirect_to station_path(@station)
     else
       render :new
     end
@@ -30,7 +27,7 @@ class Admin::StationsController < Admin::BaseController
     @station.update(station_params)
     if @station.save
       flash[:success] = "You updated #{@station.name} Station"
-      redirect_to admin_station_path(@station)
+      redirect_to station_path(@station)
     else
       flash[:notice] = 'Station not updated'
       render :edit
@@ -42,7 +39,7 @@ class Admin::StationsController < Admin::BaseController
     station.destroy
 
     flash[:success] = "Station deleted."
-    redirect_to admin_stations_path
+    redirect_to stations_path
   end
 
   private

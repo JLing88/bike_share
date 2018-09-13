@@ -6,7 +6,7 @@
     </div>
     <div>
     <%= f.label :dock_count %>
-    <%= f.number_field :dock_count %>
+    <%= f.number_field :dock_count, min: '0' %>
     </div>
     <div>
     <%= f.label :city %>
@@ -23,4 +23,4 @@
 </div>
 
 
-<h5><%= link_to "<< Back to All Stations", admin_stations_path %></h5>
+<h5><%= link_to "<< Back to All Stations", stations_path %></h5>
