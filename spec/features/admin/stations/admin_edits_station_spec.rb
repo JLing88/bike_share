@@ -17,7 +17,6 @@ describe 'user edit station' do
       fill_in("Installation date", :with => "6/2/2018")
 
       click_button "Update Station"
-      save_and_open_page
 
       expect(current_path).to eq(admin_station_path(Station.last))
       expect(page).to have_content("Edited_Station")
