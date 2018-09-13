@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 
-  auto_strip_attributes :username
   has_many :orders
 
   validates :username, presence: true, uniqueness: true

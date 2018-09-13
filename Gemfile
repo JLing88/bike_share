@@ -34,8 +34,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 
 gem 'friendly_id', '~> 5.2.0'
-gem "auto_strip_attributes", "~> 2.5"
-
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -53,7 +51,6 @@ group :development, :test do
   gem "simplecov"
   gem "database_cleaner"
   gem 'friendly_id', '~> 5.2.0'
-  gem "auto_strip_attributes", "~> 2.5"
 
 end
 
