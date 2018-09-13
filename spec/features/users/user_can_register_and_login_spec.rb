@@ -10,7 +10,6 @@ describe "As a visitor" do
       click_on "Sign Up"
 
       expect(current_path).to eq(new_user_path)
-      save_and_open_page
       fill_in :user_username, with: username
       fill_in :user_password, with: "password"
       fill_in :user_first_name, with: username
