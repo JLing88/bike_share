@@ -1,4 +1,25 @@
 class Admin::ConditionsController < Admin::BaseController
+
+  def show
+    @condition = Condition.find(params[:id])
+  end
+
+  def new
+    @condition = Condition.new()
+  end
+
+
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+      flash[:success] = "You have successfully added weather data for #{@condition.date}"
+      redirect_to admin_condition_path(@condition)
+    else
+      flash[:notice] = "Date not propperly added"
+      render :new
+    end
+  end
+
   def edit
     @condition = Condition.find(params[:id])
   end
