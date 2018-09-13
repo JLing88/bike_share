@@ -8,8 +8,7 @@ class Trip < ApplicationRecord
                         :end_date,
                         :end_station_id,
                         :bike_id,
-                        :subscription_type,
-                        :zip_code
+                        :subscription_type
 
   def start_station_name(trip)
     Station.find(trip.start_station_id).name
