@@ -8,4 +8,8 @@
   <li>Bike Id: <%= @trip.bike_id %></li>
   <li>Subscription Type: <%= @trip.subscription_type %></li>
   <li>Zip Code: <%= @trip.zip_code %></li>
+  <% if current_admin? %>
+  <p><%= link_to "Edit", edit_admin_trip_path(@trip) %></p>
+  <p><%= link_to "Delete", admin_trip_path(@trip), method: "delete" %></p>
+  <% end  %>
   <p><%= link_to "<< Back to All Trips", trips_path %>

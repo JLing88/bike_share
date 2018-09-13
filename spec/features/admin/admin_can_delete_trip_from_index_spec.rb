@@ -26,7 +26,7 @@ describe 'As an admin' do
                               subscription_type: 'stolen',
                               zip_code: 90210
                             )
-        visit admin_trips_path
+        visit trips_path
 
         expect(page).to have_content(trip_1.start_station.name)
         expect(page).to have_content(trip_2.start_station.name)

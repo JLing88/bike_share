@@ -11,7 +11,7 @@ describe "User visits stations show" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-      visit admin_station_path(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content(@station_1.name)
       expect(page).to have_content(@station_1.dock_count)
@@ -29,13 +29,13 @@ describe "User visits stations show" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-      visit admin_station_path(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Wads")
 
       click_on "Delete"
 
-      expect(current_path).to eq(admin_stations_path)
+      expect(current_path).to eq(stations_path)
       expect(page).to_not have_content("Wads")
       expect(page).to have_content("Station deleted.")
 
@@ -50,9 +50,10 @@ describe "User visits stations show" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit admin_station_path(@station_1)
+      visit station_path(@station_1)
 
-      expect(page).to have_content("The page you were looking for doesn't exist")
+      expect(page).to_not have_link("Edit")
+      expect(page).to_not have_link("Delete")
     end
   end
 end
