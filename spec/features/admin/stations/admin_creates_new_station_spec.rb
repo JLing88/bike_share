@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 describe 'user creates new station' do
-  context 'as an admin' do
+  context 'as an admin links from admin index' do
     it 'shows new station on station index' do
       @admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-      visit new_admin_station_path
+      visit admin_stations_path
+
+      click_on "Add New Station"
+
+      expect(current_path).to eq(new_admin_station_path)
 
       fill_in :station_name, with: "New_Station"
       fill_in :station_dock_count, with: 12
