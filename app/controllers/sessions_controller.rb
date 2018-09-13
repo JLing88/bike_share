@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "Logged in as #{@user.username}"
       redirect_to dashboard_path
     else
       flash[:notice] = "Username and password do not match"
