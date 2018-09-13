@@ -37,7 +37,7 @@ describe "User visits conditions edit" do
       fill_in :condition_precipitation, with: 6.00
 
       click_on "Update Condition"
-      save_and_open_page
+
       expect(current_path).to eq(condition_path(condition_2))
       expect(page).to have_content("Maximum Temperature: 500.0")
       expect(page).to have_content("Mean Temperature: 99.0")
