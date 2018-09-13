@@ -26,7 +26,6 @@ describe 'As a registered user' do
       station_4 = Station.create!(name: 'Union', dock_count: 20, city: 'Denver', installation_date: Time.now)
 
       visit stations_dashboard_path
-
       expect(page).to have_content("Average Bike Count Per Station: #{Station.average(:dock_count)}")
     end
 
