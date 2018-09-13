@@ -7,7 +7,7 @@ describe 'user creates new station' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-      visit admin_stations_path
+      visit stations_path
 
       click_on "Add New Station"
 
