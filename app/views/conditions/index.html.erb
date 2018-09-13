@@ -1,8 +1,12 @@
 <h1>All Conditions</h1>
 
+<% if current_admin? %>
+<%= link_to "Add New Condition", new_admin_condition_path %>
+<% end %>
+
 <% @conditions.each do |c| %>
   <ul>
-    <h3>Date: <%= c.date %></h3>
+    <h3><%= link_to "Date: #{c.date}", condition_path(c) %></h3>
     <li>Maximum Temperature: <%= c.max_temp%></li>
     <li>Mean Temperature: <%= c.mean_temp%></li>
     <li>Minimum Temperature: <%= c.min_temp%></li>
@@ -10,5 +14,9 @@
     <li>Mean Visibility: <%= c.mean_visibility%></li>
     <li>Mean Windspeed: <%= c.mean_windspeed%></li>
     <li>Precipitation: <%= c.precipitation%></li>
+    <% if current_admin? %>
+    <li><%= link_to "Edit", edit_admin_condition_path(c) %></li>
+    <li><%= link_to "Delete", admin_condition_path(c), method: "delete" %></li>
+    <% end %>
   </ul>
 <% end %>

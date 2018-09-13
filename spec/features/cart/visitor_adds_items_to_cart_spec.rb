@@ -9,11 +9,14 @@ describe 'visitor is not logged in, cart is empty' do
 
     click_button 'Add to Cart'
 
+    expect(page).to have_content "item 1 added to cart!"
     expect(current_path).to eq(bike_store_path)
 
     visit item_path(item_2)
 
     click_button 'Add to Cart'
+
+    expect(page).to have_content "widget added to cart!"
 
     click_link 'My Cart'
 

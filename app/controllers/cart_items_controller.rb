@@ -4,6 +4,7 @@ class CartItemsController < ApplicationController
     item = Item.find(params[:item_id])
     cart.add_item(item)
     session[:cart] = cart.data
+    flash[:success] = "#{item.title} added to cart!"
     redirect_to bike_store_path
   end
 
