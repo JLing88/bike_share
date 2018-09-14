@@ -6,6 +6,10 @@
     <li><%= item.description %></li>
     <li><%= number_to_currency(item.price) %></li>
     <li><%= image_tag("#{item.image_url}" , size: "50")%></li>
-    <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
+    <% if item.retired? %>
+      <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
+    <% else %>
+      <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
+    <% end %>
   </ul>
 <% end %>
