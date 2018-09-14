@@ -19,3 +19,8 @@
  li {
    list-style: none;
  }
+
+button:disabled,
+button[disabled]{
+  background-color: red;
+}
