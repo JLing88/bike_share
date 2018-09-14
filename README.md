@@ -1,5 +1,5 @@
-* BikeShare
-** A Ruby on Rails e-commerce and database-driven analytics site for bike commuters
+# BikeShare
+## A Ruby on Rails e-commerce and database analytics site for bike commuters
 __Visit this project on Heroku!:__ https://desolate-shore-75261.herokuapp.com/
 
 BikeShare provides analytic information on local bike use that empowers commuters to ditch their cars. Users can access weather, past trip, and station data as well as an e-commerce platform to purchase bike accessories. This app aspires to increase the amount of bike traffic while reducing the number of cars on the road.
