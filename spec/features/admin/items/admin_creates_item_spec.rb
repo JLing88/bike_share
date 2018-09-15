@@ -40,26 +40,25 @@ describe 'user creates new item' do
 
     end
 
-    # xit 'displays default picture if none entered' do
-    #   admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
-    #
-    #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-    #
-    #   visit admin_bike_store_path
-    #
-    #   click_on("Add New Bike Accessory")
-    #
-    #   fill_in :item_title, with: "zidget"
-    #   fill_in :item_description, with: "it's zidgety"
-    #   fill_in :item_price, with: 21
-    #   select "retired", from: "item[status]"
-    #
-    #   click_on("Add New Bike Accessory")
-    #
-    #   new_item = Item.last
-    #   expect(current_path).to eq(item_path(new_item))
-    #   expect(page).to have_content(default picture))
-    #
-    # end
+    it 'displays default picture if none entered' do
+      admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_store_path
+
+      click_on("Add New Bike Accessory")
+
+      fill_in :item_title, with: "zidget"
+      fill_in :item_description, with: "it's zidgety"
+      fill_in :item_price, with: 21
+      select "retired", from: "item[status]"
+
+      click_on("Add New Bike Accessory")
+
+      expect(current_path).to eq(item_path(Item.last))
+      expect(page).to have_css("img[src*='item.jpg']")
+
+    end
   end
 end
