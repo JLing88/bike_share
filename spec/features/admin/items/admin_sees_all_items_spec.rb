@@ -10,7 +10,7 @@ describe 'admin visits bike shop / item index' do
   end
 
   it 'displays each item with edit link' do
-    visit admin_items_path
+    visit items_path
 
     within(".item_#{item_1.id}") do
       expect(page).to have_link("Edit")
