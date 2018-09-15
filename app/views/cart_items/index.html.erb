@@ -26,4 +26,9 @@
 
 <h2>Cart Total</h2>
 <p><%= number_to_currency(@cart.total) %></p>
-<p><%= button_to "Checkout" %></p>
+<% if current_user %>
+<p><%= button_to "Checkout", orders_path %></p>
+<% else %>
+<p class='sign-in-checkout'><%= button_to "Sign In To Checkout", login_path %></p>
+<p><%= button_to "Sign Up To Checkout", new_user_path, method: :get %></p>
+<% end %>
