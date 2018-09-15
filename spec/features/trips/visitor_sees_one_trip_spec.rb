@@ -8,7 +8,7 @@ describe 'visitor visits page for one trip' do
 
     visit trips_path
 
-    click_link "See Trip"
+    click_link "Trip: #{trip_1.id}"
 
     expect(current_path).to eq(trip_path(trip_1))
     expect(page).to have_content(trip_1.duration)

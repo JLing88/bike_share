@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
         item.order_items.create!(item_id: item.id, order_id: order.id, quantity: quantity)
       end
         if order.save
-          flash[:notice] = "Successfully submitted your order totaling $#{order.total}.00"
+          flash[:notice] = "Successfully submitted your order totaling $#{order.total.round(2)}"
         redirect_to dashboard_path
       else
         redirect_to new_user_path
