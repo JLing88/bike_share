@@ -4,7 +4,7 @@
 <% end %>
 <% @trips.each do |t| %>
 <ul>
-  <h3>Trip: <%= t.id %></h3>
+  <h3><%= link_to "Trip: #{t.id}", trip_path(t) %></h3>
   <li>Duration: <%= t.duration %></li>
   <li>Start Date: <%= t.start_date %></li>
   <li>Start Station Name: <%= t.start_station_name(t) %></li>
@@ -13,7 +13,6 @@
   <li>Bike Id: <%= t.bike_id %></li>
   <li>Subscription Type: <%= t.subscription_type %></li>
   <li>Zip Code: <%= t.zip_code %></li>
-  <li><%= link_to 'See Trip', trip_path(t) %></li>
   <% if current_admin? %>
   <li><%= link_to "Edit", edit_admin_trip_path(t) %></li>
   <li class="trip-<%= t.id %>-delete"><%= link_to "Delete", admin_trip_path(t), method: "delete" %></li>
