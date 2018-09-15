@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
+  resources :orders, only: [:new, :create]
+
   namespace :admin do
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
