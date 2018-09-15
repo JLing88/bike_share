@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :validate_user_resource?, only: [:show]
+
   def create
     if current_user
       order = Order.create(user_id: current_user.id, status: 'ordered', created_at: Time.now, updated_at: Time.now)
@@ -13,6 +15,15 @@ class OrdersController < ApplicationController
       else
         redirect_to new_user_path
       end
+    end
+  end
+
+  def show
+    if validate_user_resource?
+      @order = Order.find(params[:id])
+      @order_items = OrderItem.where(order_id: @order.id)
+    else
+      render file: "public/404.html"
     end
   end
 end
