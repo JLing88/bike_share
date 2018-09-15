@@ -9,17 +9,11 @@
       <li><%= image_tag("#{item.image_url}" , size: "50")%></li>
       <% if current_admin?%>
         <li><%= link_to "Edit", edit_admin_item_path(item)%></li>
-        <% if item.retired? %>
-          <li><%= button_to "Reactivate retired item", item.change_status(item) %></li>
-        <% else %>
-        <li><%= button_to "Retire active item", item.change_status(item) %></li>
-        <% end %>
+      <% end %>
+      <% if item.retired? %>
+        <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
       <% else %>
-        <% if item.retired? %>
-          <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
-        <% else %>
-          <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
-        <% end %>
+        <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
       <% end %>
     </ul>
   </div>

@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:show]
-  get '/bike-store', to: 'items#index'
 
+  get '/bike-store', to: 'items#index'
+  get '/admin/bike-store', to: 'admin/items#index'
   post '/cart_items', to: 'cart_items#create'
   post 'cart_items/:id/add', to: 'cart_items#add_item'
   post 'cart_items/:id/decrease', to: 'cart_items#decrease_item'

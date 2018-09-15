@@ -8,11 +8,4 @@ class Item < ApplicationRecord
 
   enum status: ["active", "retired"]
 
-  def change_status(item)
-    if item.status == 0
-      item.status = 1
-    else
-      item.status = 0
-    end
-  end
 end
