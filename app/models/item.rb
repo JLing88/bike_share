@@ -7,4 +7,12 @@ class Item < ApplicationRecord
   validates_presence_of :image_url
 
   enum status: ["active", "retired"]
+
+  def change_status(item)
+    if item.status == 0
+      item.status = 1
+    else
+      item.status = 0
+    end
+  end
 end
