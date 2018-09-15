@@ -13,7 +13,7 @@ describe 'admin edits item' do
 
   context 'from the index page' do
     it 'displays each item with edit link' do
-      visit bike_store_path
+      visit admin_bike_store_path
 
       within(".item_#{@item_1.id}") do
         expect(page).to have_link("Edit")
@@ -21,7 +21,7 @@ describe 'admin edits item' do
     end
 
     xit 'displays edited item back on the index page' do
-      visit bike_store_path
+      visit admin bike_store_path
 
       within(".item_#{@item_1.id}") do
         click_on("Edit")
