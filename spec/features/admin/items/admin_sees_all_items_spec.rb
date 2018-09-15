@@ -23,7 +23,7 @@ describe 'admin visits bike shop / item index' do
 
   end
 
-  it 'displays button to retire if active' do
+  it 'displays button to retire item if active' do
 
   end
 end
