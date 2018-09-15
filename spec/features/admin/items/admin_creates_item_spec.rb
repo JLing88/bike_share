@@ -22,7 +22,7 @@ describe 'user creates new item' do
       fill_in :item_description, with: "it's zidgety"
       fill_in :item_price, with: 21
       fill_in :item_url, with: "zidget.jpg"
-      select "active", from :item_status
+      select "active", from: "item[status]"
 
       click_on("Add Bike Accessory")
 
