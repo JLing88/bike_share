@@ -1,7 +1,7 @@
 <h1>Bike Accessories</h1>
 <h4>Admin View</h4>
 
-<%= button_to "Add New Bike Accessory", new_admin_item_path %>
+<%= link_to "Add New Bike Accessory", new_admin_item_path %>
 
 <% @items.each do |item| %>
   <div class=item_<%= item.id %>>

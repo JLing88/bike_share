@@ -1,0 +1,21 @@
+<div class='form'>
+  <%= form_for [:admin, @item] do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price, min: '0' %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :status %>
+  <%= f.select :status, options_for_select([["active"],["retired"]]) %>
+
+  <%= f.submit "Add New Bike Accessory" %>
+
+<% end %>

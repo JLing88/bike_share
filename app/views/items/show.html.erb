@@ -9,4 +9,9 @@
   <% else %>
     <li><%= button_to "Add to Cart", cart_items_path(item_id: @item.id)%></li>
   <% end %>
+  <% if current_admin? %>
+    <%= link_to "<< Back to all Accessories", admin_bike_store_path %>
+  <% else %>
+    <%= link_to "<< Back to all Accessories", bike_store_path %>
+  <% end %>
 </ul>
