@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :create, :edit, :update, :destroy]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
+    resources :items, only: [:edit, :update]
   end
 
   resources :items, only: [:show]
