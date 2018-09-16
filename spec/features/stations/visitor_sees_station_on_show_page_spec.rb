@@ -28,4 +28,19 @@ describe 'as a visitor' do
       expect(page).to have_content(station_1.installation_date)
     end
   end
+
+  context 'as a registered user' do
+    it 'should show analytics info for the station' do
+      station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+      station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+      trip_1 = Trip.create!(duration: 60, start_date: Time.now, start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
+      trip_2 = Trip.create!(duration: 60, start_date: Time.now, start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 7, subscription_type: 'monthly', zip_code: 80333)
+      trip_3 = Trip.create!(duration: 60, start_date: Time.now, start_station_id: station_2.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
+
+      visit station_path(station_1)
+
+      expect(page).to have_content("Total Number of Trips Started at this Station: 2")
+      expect(page).to have_content("Total Number of Trips Ended at this Station: 1")
+    end
+  end
 end

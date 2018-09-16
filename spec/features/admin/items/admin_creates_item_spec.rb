@@ -23,7 +23,6 @@ describe 'user creates new item' do
       fill_in :item_price, with: 21
       fill_in :item_image_url, with: "item.jpg"
       select "active", from: "item[status]"
-      save_and_open_page
 
       click_on("Submit")
 
