@@ -36,3 +36,48 @@
       </div>
     </div>
 <% end %>
+
+
+<h1>Bike Accessories</h1>
+
+<% if current_admin? %>
+<%= link_to "Add New Condition", new_admin_condition_path %>
+<% end  %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Max Temp</th>
+      <th scope="col">Mean Temp</th>
+      <th scope="col">Min Temp</th>
+      <th scope="col">Mean Humidity</th>
+      <th scope="col">Mean Visibility</th>
+      <th scope="col">Mean Windspeed</th>
+      <th scope="col">Precipitation</th>
+      <% if current_admin?  %>
+        <th></th>
+        <th></th>
+        <% end %>
+    </tr>
+  </thead>
+  <% @conditions.each do |c| %>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= link_to "#{c.date.strftime("%m-%d-%Y")}", condition_path(c) %></th>
+      <td><%= c.max_temp %></td>
+      <td><%= c.mean_temp %></td>
+      <td><%= c.min_temp %></td>
+      <td><%= c.mean_humidity %></td>
+      <td><%= c.mean_visibility %></td>
+      <td><%= c.mean_windspeed %></td>
+      <td><%= c.precipitation %></td>
+      <% if current_admin? %>
+      <td><%= link_to "Edit", edit_admin_condition_path(c) %></td>
+      <td><%= link_to "Delete", admin_condition_path(c), method: "delete" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
