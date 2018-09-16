@@ -16,7 +16,7 @@
       <% else %><%= button_to "-", "/cart_items/#{cart_item.id}/decrease" %>
       <% end %>
     </td>
-    <td class="price-#{cart_item.id}"><%= number_to_currency((cart_item.price)) %></td>
+    <td class="price-#{cart_item.id}"><%= number_to_currency(cart_item.price) %></td>
     <td class="image-#{cart_item.id}"><%= image_tag("#{cart_item.image_url}" , size: "30")%></td>
     <td class="subtotal-#{cart_item.id}"><%= number_to_currency(cart_item.subtotal(cart_item)) %></td>
     <td class="remove_item-#{cart_item.id}"><%= button_to 'Remove', cart_items_path(item_id: cart_item.id), method: :delete%></td>
@@ -26,4 +26,9 @@
 
 <h2>Cart Total</h2>
 <p><%= number_to_currency(@cart.total) %></p>
-<p><%= button_to "Checkout" %></p>
+<% if current_user %>
+<p><%= button_to "Checkout", orders_path %></p>
+<% else %>
+<p class='sign-in-checkout'><%= button_to "Sign In To Checkout", login_path %></p>
+<p><%= button_to "Sign Up To Checkout", new_user_path, method: :get %></p>
+<% end %>

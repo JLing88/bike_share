@@ -32,32 +32,32 @@ describe 'as a visitor' do
                                     )
       visit conditions_path
 
-      expect(page).to have_link("Date: #{condition_1.date}")
-      expect(page).to have_content("Maximum Temperature: #{condition_1.max_temp}")
-      expect(page).to have_content("Mean Temperature: #{condition_1.mean_temp}")
-      expect(page).to have_content("Minimum Temperature: #{condition_1.min_temp}")
-      expect(page).to have_content("Mean Humidity: #{condition_1.mean_humidity}")
-      expect(page).to have_content("Mean Visibility: #{condition_1.mean_visibility}")
-      expect(page).to have_content("Mean Windspeed: #{condition_1.mean_windspeed}")
-      expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
+      expect(page).to have_link(condition_1.date.strftime("%m-%d-%Y"))
+      expect(page).to have_content(condition_1.max_temp)
+      expect(page).to have_content(condition_1.mean_temp)
+      expect(page).to have_content(condition_1.min_temp)
+      expect(page).to have_content(condition_1.mean_humidity)
+      expect(page).to have_content(condition_1.mean_visibility)
+      expect(page).to have_content(condition_1.mean_windspeed)
+      expect(page).to have_content(condition_1.precipitation)
 
-      expect(page).to have_link("#{condition_2.date}")
-      expect(page).to have_content("Maximum Temperature: #{condition_2.max_temp}")
-      expect(page).to have_content("Mean Temperature: #{condition_2.mean_temp}")
-      expect(page).to have_content("Minimum Temperature: #{condition_2.min_temp}")
-      expect(page).to have_content("Mean Humidity: #{condition_2.mean_humidity}")
-      expect(page).to have_content("Mean Visibility: #{condition_2.mean_visibility}")
-      expect(page).to have_content("Mean Windspeed: #{condition_2.mean_windspeed}")
-      expect(page).to have_content("Precipitation: #{condition_2.precipitation}")
+      expect(page).to have_link(condition_2.date.strftime("%m-%d-%Y"))
+      expect(page).to have_content(condition_2.max_temp)
+      expect(page).to have_content(condition_2.mean_temp)
+      expect(page).to have_content(condition_2.min_temp)
+      expect(page).to have_content(condition_2.mean_humidity)
+      expect(page).to have_content(condition_2.mean_visibility)
+      expect(page).to have_content(condition_2.mean_windspeed)
+      expect(page).to have_content(condition_2.precipitation)
 
-      expect(page).to have_link("#{condition_3.date}")
-      expect(page).to have_content("Maximum Temperature: #{condition_3.max_temp}")
-      expect(page).to have_content("Mean Temperature: #{condition_3.mean_temp}")
-      expect(page).to have_content("Minimum Temperature: #{condition_3.min_temp}")
-      expect(page).to have_content("Mean Humidity: #{condition_3.mean_humidity}")
-      expect(page).to have_content("Mean Visibility: #{condition_3.mean_visibility}")
-      expect(page).to have_content("Mean Windspeed: #{condition_3.mean_windspeed}")
-      expect(page).to have_content("Precipitation: #{condition_3.precipitation}")
+      expect(page).to have_link(condition_3.date.strftime("%m-%d-%Y"))
+      expect(page).to have_content(condition_3.max_temp)
+      expect(page).to have_content(condition_3.mean_temp)
+      expect(page).to have_content(condition_3.min_temp)
+      expect(page).to have_content(condition_3.mean_humidity)
+      expect(page).to have_content(condition_3.mean_visibility)
+      expect(page).to have_content(condition_3.mean_windspeed)
+      expect(page).to have_content(condition_3.precipitation)
 
     end
   end
@@ -77,7 +77,7 @@ describe 'as a visitor' do
                                     )
       visit conditions_path
 
-      click_link '2018-08-29'
+      click_link '08-29-2018'
 
       expect(current_path).to eq(condition_path(condition_1))
 

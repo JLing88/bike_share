@@ -8,6 +8,7 @@ describe 'as a visitor' do
 
       station = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
 
+
       visit station_path(station)
 
       expect(current_path).to eq(station_path(station.slug))
@@ -18,14 +19,48 @@ describe 'as a visitor' do
       user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+      station = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+
+      visit station_path(station)
+
+      expect(page).to have_content(station.name)
+      expect(page).to have_content(station.dock_count)
+      expect(page).to have_content(station.city)
+      expect(page).to have_content(station.installation_date)
+    end
+  end
+
+  context 'as a registered user' do
+    it 'should show analytics info for the station' do
       station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+      station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+      trip_1 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
+      trip_2 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80333)
+      trip_3 = Trip.create!(duration: 60, start_date: Date.parse('2018-05-05'), start_station_id: station_2.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
 
       visit station_path(station_1)
 
-      expect(page).to have_content(station_1.name)
-      expect(page).to have_content(station_1.dock_count)
-      expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content("Total Number of Trips Started at this Station: 2")
+      expect(page).to have_content("Total Number of Trips Ended at this Station: 1")
+      expect(page).to have_content("Most Frequent Destination from this Station: #{station_2.name}")
+      expect(page).to have_content("Most Frequent Origination to this Station: #{station_2.name}")
+      expect(page).to have_content("Date of Most Trips Originated from this Station: #{trip_1.start_date.strftime("%F")}")
+      expect(page).to have_content("Bike ID with Most Trips Originated from this Station: #{trip_1.bike_id}")
+
+    end
+
+    it 'should show top bike id for trips originating at the station' do
+      station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+      station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+      trip_1 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
+      trip_2 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80333)
+      trip_3 = Trip.create!(duration: 60, start_date: Date.parse('2018-05-05'), start_station_id: station_2.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
+      trip_4 = Trip.create!(duration: 60, start_date: Date.parse('2018-05-05'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
+
+      visit station_path(station_1)
+
+      expect(page).to have_content("Bike ID with Most Trips Originated from this Station: #{trip_1.bike_id}")
+
     end
   end
 end

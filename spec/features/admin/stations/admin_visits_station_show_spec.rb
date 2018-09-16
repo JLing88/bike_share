@@ -6,6 +6,7 @@ describe "User visits stations show" do
     it "has edit and delete buttons per station" do
 
       @station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+      trip = Trip.create!(duration: 60, start_date: Time.now, start_station_id: @station_1.id, end_date: Time.now, end_station_id: @station_1.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
 
       @admin = User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
 

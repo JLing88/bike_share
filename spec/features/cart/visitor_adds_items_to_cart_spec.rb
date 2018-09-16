@@ -31,6 +31,7 @@ describe 'visitor is not logged in, cart is empty' do
   end
   it 'allows visitor to increase and decrease the amount of an item' do
     item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+    item_2 = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
 
     visit item_path(item)
 

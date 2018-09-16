@@ -54,9 +54,14 @@ if Rails.env == 'development' || Rails.env == 'production'
   end
 
   Item.destroy_all
+  image_array = ['https://static1.squarespace.com/static/548f8051e4b0155e1e517029/56ec47608259b54cf1f12c09/56ec47608259b54cf1f12c0a/1458325348859/6_BeerHolder+black.jpg',
+                 'https://i.pinimg.com/originals/e9/1a/49/e91a49f7be6c9dc65c0c5fa2c197fecb.jpg',
+                 'http://www.funnykittensite.com/pictures/Bike_Basket_Of_Kitten.jpg']
   20.times do |num|
-    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: 'https://static1.squarespace.com/static/548f8051e4b0155e1e517029/56ec47608259b54cf1f12c09/56ec47608259b54cf1f12c0a/1458325348859/6_BeerHolder+black.jpg'  )
+    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: image_array.shuffle.first)
   end
+
+  User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
 
   ActiveRecord::Base.connection.reset_pk_sequence!('stations')
   ActiveRecord::Base.connection.reset_pk_sequence!('trips')

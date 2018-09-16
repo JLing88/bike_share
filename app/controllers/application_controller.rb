@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :require_user
   helper_method :current_admin?
+  helper_method :validate_user_resource?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,6 +16,11 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def validate_user_resource?
+    order = Order.find(params[:id])
+    current_user == order.user || current_admin?
   end
 
   def cart

@@ -10,4 +10,32 @@ class Station < ApplicationRecord
     Station.average(:dock_count)
   end
 
+  def number_start_trips
+    Trip.where(start_station_id: self.id).count
+  end
+
+  def number_end_trips
+    Trip.where(end_station_id: self.id).count
+  end
+
+  def most_freq_destination
+    #most frequent destination FROM this Station
+    id = (Trip.where(start_station_id: self.id).group(:end_station_id).order("count_all DESC").count).keys.first
+    Station.find(id)
+  end
+
+  def most_freq_origination
+    #most frequent origination TO this Station
+    id = (Trip.where(end_station_id: self.id).group(:start_station_id).order("count_all DESC").count).keys.first
+    Station.find(id)
+  end
+
+  def date_most_start_trips
+    (Trip.where(start_station_id: self.id).group(:start_date).order("count_all DESC").count).keys.first
+  end
+
+  def bike_id_most_start_trips
+    (Trip.where(start_station_id: self.id).group(:bike_id).order("count_all DESC").count).keys.first
+  end
+
 end

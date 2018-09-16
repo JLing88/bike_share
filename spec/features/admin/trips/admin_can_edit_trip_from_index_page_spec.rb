@@ -15,10 +15,19 @@ describe 'as a admin' do
                               subscription_type: 'monthly',
                               zip_code: 80222
                             )
+        trip_2 = Trip.create!(duration: 60,
+                              start_date: Date.parse("2017-10-29"),
+                              start_station_id: station_1.id,
+                              end_date: Date.parse("2017-11-29"),
+                              end_station_id: station_1.id,
+                              bike_id: 1,
+                              subscription_type: 'monthly',
+                              zip_code: 80222
+                            )
 
         visit trips_path
 
-        click_link "Edit"
+        first(:link, 'Edit').click
 
         expect(current_path).to eq(edit_admin_trip_path(trip_1))
 

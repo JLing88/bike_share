@@ -1,8 +1,17 @@
 <h1>Item: <%= @item.title %></h1>
 
 <ul>
-  <li><%= image_tag("#{@item.image_url}" , size: "200")%></li>
-  <li> Price: $<%= @item.price.round(2) %> </li>
+  <li><img src="<%= @item.image_url %>" class="img-fluid" alt="Responsive image"></li>
+  <li> Price: <%= number_to_currency(@item.price) %> </li>
   <li> Description: <%= @item.description %> </li>
-  <li> <%= button_to "Add to Cart", cart_items_path(item_id: @item.id)%></li>
+  <% if @item.retired? %>
+    <li><%= button_to "Unavailable", cart_items_path(item_id: @item.id), disabled: true%></li>
+  <% else %>
+    <li><%= button_to "Add to Cart", cart_items_path(item_id: @item.id)%></li>
+  <% end %>
+  <% if current_admin? %>
+    <%= link_to "<< Back to all Accessories", admin_bike_store_path %>
+  <% else %>
+    <%= link_to "<< Back to all Accessories", bike_store_path %>
+  <% end %>
 </ul>

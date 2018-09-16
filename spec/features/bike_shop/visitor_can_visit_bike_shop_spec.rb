@@ -14,7 +14,7 @@ describe 'As a visitor' do
       item_9 = Item.create(title: "Widget_9", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
       item_10 = Item.create(title: "Widget_10", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
       item_11 = Item.create(title: "Widget_11", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
-      item_12 = Item.create(title: "Widget_12", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png")
+      item_12 = Item.create(title: "Widget_12", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png", status: 1)
 
       visit bike_store_path
 
@@ -30,6 +30,16 @@ describe 'As a visitor' do
       expect(page).to have_content(item_10.title)
       expect(page).to have_content(item_11.title)
       expect(page).to have_content(item_12.title)
+    end
+  end
+
+  describe 'they are unable to add disabled item to cart' do
+    it 'shows Item Unavailable and the button is disabled' do
+      item_13 = Item.create(title: "Widget_1", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png", status: 1)
+      item_14 = Item.create(title: "Widget_1", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png", status: 1)
+      visit bike_store_path
+
+      expect(page).to have_button('Unavailable', disabled: true)
     end
   end
 end
