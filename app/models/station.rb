@@ -10,4 +10,16 @@ class Station < ApplicationRecord
     Station.average(:dock_count)
   end
 
+  def number_start_trips(station)
+    Trip.where(start_station_id: station.id).count
+  end
+
+  def number_end_trips(station)
+    Trip.where(end_station_id: station.id).count
+  end
+
+  def most_freq_destination(station)
+
+  end
+
 end
