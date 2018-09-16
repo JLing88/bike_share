@@ -34,4 +34,8 @@ class Station < ApplicationRecord
     (Trip.where(start_station_id: self.id).group(:start_date).order("count_all DESC").count).keys.first
   end
 
+  def bike_id_most_start_trips
+    (Trip.where(start_station_id: self.id).group(:bike_id).order("count_all DESC").count).keys.first
+  end
+
 end

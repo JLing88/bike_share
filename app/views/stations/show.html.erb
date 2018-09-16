@@ -10,7 +10,8 @@
     <li>Total Number of Trips Ended at this Station: <%= @station.number_end_trips %></li>
     <li>Most Frequent Destination from this Station: <%= @station.most_freq_destination.name %></li>
     <li>Most Frequent Origination to this Station: <%= @station.most_freq_origination.name %></li>
-    <li>Date of Most Origination Trips: <%= @station.date_most_start_trips.strftime("%F") %></li>
+    <li>Date of Most Trips Originated from this Station: <%= @station.date_most_start_trips.strftime("%F") %></li>
+    <li>Bike ID with Most Trips Originated from this Station: <%= @station.bike_id_most_start_trips %></li>
   <% end %>
   <% if current_admin? %>
   <li><%= link_to "Edit", edit_admin_station_path(@station) %></li>
