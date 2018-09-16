@@ -1,23 +1,47 @@
 <h1>All Trips</h1>
+
 <% if current_admin? %>
-<%= link_to "Add New Trip", new_admin_trip_path%>
-<% end %>
-<% @trips.each do |t| %>
-<ul>
-  <h3><%= link_to "Trip: #{t.id}", trip_path(t) %></h3>
-  <li>Duration: <%= t.duration %></li>
-  <li>Start Date: <%= t.start_date %></li>
-  <li>Start Station Name: <%= t.start_station_name(t) %></li>
-  <li>End Date: <%= t.end_date %></li>
-  <li>End Station Name: <%= t.end_station_name(t) %></li>
-  <li>Bike Id: <%= t.bike_id %></li>
-  <li>Subscription Type: <%= t.subscription_type %></li>
-  <li>Zip Code: <%= t.zip_code %></li>
-  <% if current_admin? %>
-  <li><%= link_to "Edit", edit_admin_trip_path(t) %></li>
-  <li class="trip-<%= t.id %>-delete"><%= link_to "Delete", admin_trip_path(t), method: "delete" %></li>
-  <% end %>
-</ul>
+<%= link_to "Add New Trip", new_admin_trip_path %>
 <% end  %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Trip</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Start Station</th>
+      <th scope="col">End Date</th>
+      <th scope="col">End Station</th>
+      <th scope="col">Bike ID</th>
+      <th scope="col">Subscription Type</th>
+      <th scope="col">Zip Code</th>
+      <% if current_admin?  %>
+        <th></th>
+        <th></th>
+        <% end %>
+    </tr>
+  </thead>
+  <% @trips.each do |t|  %>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= link_to "#{t.id}", trip_path(t) %></th>
+      <td><%= t.duration %></td>
+      <td><%= t.start_date.strftime("%m-%d-%Y") %></td>
+      <td><%= t.start_station_name(t) %></td>
+      <td><%= t.end_date.strftime("%m-%d-%Y") %></td>
+      <td><%= t.end_station_name(t) %></td>
+      <td><%= t.bike_id %></td>
+      <td><%= t.subscription_type %></td>
+      <td><%= t.zip_code %></td>
+      <% if current_admin? %>
+      <td><%= link_to "Edit", edit_admin_trip_path(t) %></td>
+      <td><%= link_to "Delete", admin_trip_path(t), method: "delete" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 
 <%= paginate @trips %>
