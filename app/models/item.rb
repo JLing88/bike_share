@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   validates_presence_of :image_url
 
   enum status: ["active", "retired"]
+
 end
