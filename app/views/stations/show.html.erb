@@ -4,6 +4,8 @@
   <li>Dock Count: <%= @station.dock_count %></li>
   <li>City: <%= @station.city %></li>
   <li>Installation Date: <%= @station.installation_date %></li>
+  <li>Total Number of Trips Started at this Station: <%= @station.number_start_trips(@station) %></li>
+  <li>Total Number of Trips Ended at this Station: <%= @station.number_end_trips(@station) %></li>
   <% if current_admin? %>
   <li><%= link_to "Edit", edit_admin_station_path(@station) %></li>
   <li><%= link_to "Delete", admin_station_path(@station), method: "delete" %></li>
