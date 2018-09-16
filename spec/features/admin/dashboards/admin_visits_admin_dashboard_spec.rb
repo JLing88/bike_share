@@ -10,7 +10,7 @@ describe 'as an admin' do
 
     it 'has link to all accessories which directs to admin/bike_shop' do
 
-      visit admin_dashboards_path
+      visit admin_dashboard_path
 
       click_on("See All Accessories - Go to Bike Shop")
 

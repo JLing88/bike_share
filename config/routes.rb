@@ -17,11 +17,11 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :items, only: [:new, :create, :edit, :update]
-    resources :dashboards, only: [:index]
   end
 
   resources :items, only: [:show]
 
+  get '/admin/dashboard', to: 'admin/dashboards#index'
   get '/bike-store', to: 'items#index'
   get '/admin/bike-store', to: 'items#index'
   post '/cart_items', to: 'cart_items#create'
