@@ -20,13 +20,30 @@ describe 'admin edits item' do
       end
     end
 
-    xit 'displays edited item back on the index page' do
-      visit admin bike_store_path
+    it 'displays edited item back on the index page' do
+      visit admin_bike_store_path
+
+      expect(page).to have_content(@item_1.title)
+      expect(page).to have_content(@item_1.description)
+      expect(page).to have_content(@item_1.price)
 
       within(".item_#{@item_1.id}") do
         click_on("Edit")
       end
 
+      expect(current_path).to eq(edit_admin_item_path(@item_1))
+
+      fill_in :item_title, with: "zidget"
+      fill_in :item_description, with: "it's zidgety"
+      fill_in :item_price, with: 21
+      fill_in :item_image_url, with: "item.jpg"
+      select "active", from: "item[status]"
+
+      click_on("Submit")
+
+      expect(page).to have_content("zidget")
+      expect(page).to have_content("it's zidgety")
+      expect(page).to have_content("21")
 
     end
   end

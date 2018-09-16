@@ -23,8 +23,9 @@ describe 'user creates new item' do
       fill_in :item_price, with: 21
       fill_in :item_image_url, with: "item.jpg"
       select "active", from: "item[status]"
+      save_and_open_page
 
-      click_on("Add New Bike Accessory")
+      click_on("Submit")
 
       new_item = Item.last
       expect(current_path).to eq(item_path(new_item))
@@ -54,7 +55,7 @@ describe 'user creates new item' do
       fill_in :item_price, with: 21
       select "retired", from: "item[status]"
 
-      click_on("Add New Bike Accessory")
+      click_on("Submit")
 
       expect(current_path).to eq(item_path(Item.last))
       expect(page).to have_css("img[src*='item.jpg']")
