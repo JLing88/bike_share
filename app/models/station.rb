@@ -30,4 +30,8 @@ class Station < ApplicationRecord
     Station.find(id)
   end
 
+  def date_most_start_trips
+    (Trip.where(start_station_id: self.id).group(:start_date).order("count_all DESC").count).keys.first
+  end
+
 end
