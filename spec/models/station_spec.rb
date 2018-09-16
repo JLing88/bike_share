@@ -145,5 +145,19 @@ describe Station, type: :model do
         expect(station_1.most_freq_origination).to eq(station_2)
       end
     end
+
+    describe '#date_most_start_trips' do
+      it 'returns date with the highest number of trips started at station' do
+        station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+        station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+
+        trip_1 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
+        trip_2 = Trip.create!(duration: 60, start_date: Date.parse('2018-04-04'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 7, subscription_type: 'monthly', zip_code: 80333)
+        trip_3 = Trip.create!(duration: 60, start_date: Date.parse('2018-05-05'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
+        trip_4 = Trip.create!(duration: 50, start_date: Date.parse('2018-05-05'), start_station_id: station_2.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 15, subscription_type: 'monthly', zip_code: 80555)
+
+        expect(station_1.date_most_start_trips).to eq(trip_1.start_date)
+      end
+    end
   end
 end
