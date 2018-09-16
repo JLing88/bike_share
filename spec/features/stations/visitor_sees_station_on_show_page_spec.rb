@@ -8,6 +8,7 @@ describe 'as a visitor' do
 
       station = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
 
+
       visit station_path(station)
 
       expect(current_path).to eq(station_path(station.slug))
@@ -18,14 +19,14 @@ describe 'as a visitor' do
       user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
+      station = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
 
-      visit station_path(station_1)
+      visit station_path(station)
 
-      expect(page).to have_content(station_1.name)
-      expect(page).to have_content(station_1.dock_count)
-      expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station.name)
+      expect(page).to have_content(station.dock_count)
+      expect(page).to have_content(station.city)
+      expect(page).to have_content(station.installation_date)
     end
   end
 
@@ -41,6 +42,9 @@ describe 'as a visitor' do
 
       expect(page).to have_content("Total Number of Trips Started at this Station: 2")
       expect(page).to have_content("Total Number of Trips Ended at this Station: 1")
+      expect(page).to have_content("Most Frequent Destination from this Station: #{station_2.name}")
+      expect(page).to have_content("Most Frequent Origination to this Station: #{station_2.name}")
+
     end
   end
 end
