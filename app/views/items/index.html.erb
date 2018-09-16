@@ -1,17 +1,38 @@
 <h1>Bike Accessories</h1>
+<% @items.in_groups_of(2) do |item1, item2| %>
 
-<% @items.each do |item| %>
-  <div class=item_<%= item.id %>>
-    <ul>
-      <li><%= link_to item.title, item_path(item)%></li>
-      <li><%= item.description %></li>
-      <li><%= number_to_currency(item.price) %></li>
-      <li><%= image_tag("#{item.image_url}" , size: "50")%></li>
-      <% if item.retired? %>
-        <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
-      <% else %>
-        <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
-      <% end %>
-    </ul>
-  </div>
+  <div class='row'>
+    <div class='col-xs-6'>
+      <div class="card" style="width: 50rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to item1.title, item_path(item1)%></h5>
+          <img><%= image_tag("#{item1.image_url}" , size: "250")%></img>
+          <p class="card-text"><%= item1.description %></p>
+          <p class="card-text"><%= number_to_currency(item1.price) %></p>
+          <a href="#" class="btn btn-primary"><% if item1.retired? %>
+            <li><%= button_to "Unavailable", cart_items_path(item_id: item1.id), disabled: true%></li>
+          <% else %>
+            <li><%= button_to "Add to Cart", cart_items_path(item_id: item1.id)%></li>
+          <% end %>
+          </a>
+        </div>
+      </div>
+    </div>
+      <div class='col-xs-4'>
+        <div class="card" style="width: 50rem;">
+          <div class="card-body2">
+            <h5 class="card-title"><%= link_to item2.title, item_path(item2)%></h5>
+            <img><%= image_tag("#{item2.image_url}" , size: "250")%></img>
+            <p class="card-text"><%= item2.description %></p>
+            <p class="card-text"><%= number_to_currency(item2.price) %></p>
+            <a href="#" class="btn btn-primary"><% if item2.retired? %>
+              <li><%= button_to "Unavailable", cart_items_path(item_id: item2.id), disabled: true%></li>
+            <% else %>
+              <li><%= button_to "Add to Cart", cart_items_path(item_id: item2.id)%></li>
+            <% end %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>

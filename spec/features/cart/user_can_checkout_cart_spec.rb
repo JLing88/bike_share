@@ -6,11 +6,13 @@ describe 'users can checkout' do
       user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+      item2 = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+
       visit item_path(item)
 
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
 
       visit cart_path
 
@@ -24,11 +26,12 @@ describe 'users can checkout' do
   context 'user is not logged in' do
     it 'prompts visitor to log in' do
       item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+      item2 = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
       visit item_path(item)
 
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
 
       visit cart_path
 
@@ -41,11 +44,13 @@ describe 'users can checkout' do
   context 'visitor is not signed up' do
     it 'prompts visitor to sign up' do
       item = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+      item2 = Item.create(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+
       visit item_path(item)
 
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
-      click_button 'Add to Cart'
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
+      first(:button, 'Add to Cart').click
 
       visit cart_path
 

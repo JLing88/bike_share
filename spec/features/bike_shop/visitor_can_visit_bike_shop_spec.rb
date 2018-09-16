@@ -36,8 +36,9 @@ describe 'As a visitor' do
   describe 'they are unable to add disabled item to cart' do
     it 'shows Item Unavailable and the button is disabled' do
       item_13 = Item.create(title: "Widget_1", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png", status: 1)
+      item_14 = Item.create(title: "Widget_1", description: "Something Sweet", price: 1.99, image_url: "https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png", status: 1)
       visit bike_store_path
-      
+
       expect(page).to have_button('Unavailable', disabled: true)
     end
   end
