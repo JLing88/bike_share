@@ -1,81 +1,47 @@
-<h1>Bike Accessories</h1>
-<% @items.in_groups_of(2) do |item1, item2| %>
 
-  <div class='row'>
-    <div class='col-xs-6'>
-      <div class="card" style="width: 50rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to item1.title, item_path(item1)%></h5>
-          <img><%= image_tag("#{item1.image_url}" , size: "250")%></img>
-          <p class="card-text"><%= item1.description %></p>
-          <p class="card-text"><%= number_to_currency(item1.price) %></p>
-          <a href="#" class="btn btn-primary"><% if item1.retired? %>
-            <li><%= button_to "Unavailable", cart_items_path(item_id: item1.id), disabled: true%></li>
-          <% else %>
-            <li><%= button_to "Add to Cart", cart_items_path(item_id: item1.id)%></li>
-          <% end %>
-          </a>
-        </div>
-      </div>
-    </div>
-      <div class='col-xs-4'>
-        <div class="card" style="width: 50rem;">
-          <div class="card-body2">
-            <h5 class="card-title"><%= link_to item2.title, item_path(item2)%></h5>
-            <img><%= image_tag("#{item2.image_url}" , size: "250")%></img>
-            <p class="card-text"><%= item2.description %></p>
-            <p class="card-text"><%= number_to_currency(item2.price) %></p>
-            <a href="#" class="btn btn-primary"><% if item2.retired? %>
-              <li><%= button_to "Unavailable", cart_items_path(item_id: item2.id), disabled: true%></li>
-            <% else %>
-              <li><%= button_to "Add to Cart", cart_items_path(item_id: item2.id)%></li>
-            <% end %>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-<% end %>
 
 
 <h1>Bike Accessories</h1>
 
 <% if current_admin? %>
-<%= link_to "Add New Condition", new_admin_condition_path %>
+<%= link_to "Add New Bike Accessory", new_admin_item_path %>
 <% end  %>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Max Temp</th>
-      <th scope="col">Mean Temp</th>
-      <th scope="col">Min Temp</th>
-      <th scope="col">Mean Humidity</th>
-      <th scope="col">Mean Visibility</th>
-      <th scope="col">Mean Windspeed</th>
-      <th scope="col">Precipitation</th>
+      <th scope="col">Item</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
       <% if current_admin?  %>
         <th></th>
         <th></th>
         <% end %>
     </tr>
   </thead>
-  <% @conditions.each do |c| %>
+  <% @items.each do |item| %>
 
   <tbody>
     <tr>
-      <th scope="row"><%= link_to "#{c.date.strftime("%m-%d-%Y")}", condition_path(c) %></th>
-      <td><%= c.max_temp %></td>
-      <td><%= c.mean_temp %></td>
-      <td><%= c.min_temp %></td>
-      <td><%= c.mean_humidity %></td>
-      <td><%= c.mean_visibility %></td>
-      <td><%= c.mean_windspeed %></td>
-      <td><%= c.precipitation %></td>
+      <th scope="row"><%= link_to "#{item.title}", item_path(item) %></th>
+      <td>
+        <img><%= image_tag("#{item.image_url}" , size: "50")%></img>
+      </td>
+      <td><%= item.description %></td>
+      <td><%= number_to_currency(item.price) %></td>
+      <td>
+      <a href="#" class="btn btn-primary"><% if item.retired? %>
+        <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
+      <% else %>
+        <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
+      <% end %>
+      </a>
+    </td>
       <% if current_admin? %>
-      <td><%= link_to "Edit", edit_admin_condition_path(c) %></td>
-      <td><%= link_to "Delete", admin_condition_path(c), method: "delete" %></td>
+      <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
+      <td><%= link_to "Delete", admin_item_path(item), method: "delete" %></td>
       <% end %>
     </tr>
   </tbody>
