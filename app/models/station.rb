@@ -19,6 +19,7 @@ class Station < ApplicationRecord
   end
 
   def most_freq_destination(station)
+    #most frequent destination FROM this Station
 
   end
 
