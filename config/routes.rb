@@ -17,12 +17,13 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :items, only: [:new, :create, :edit, :update]
+    resources :dashboards, only: [:index]
   end
 
   resources :items, only: [:show]
 
   get '/bike-store', to: 'items#index'
-  get '/admin/bike-store', to: 'admin/items#index'
+  get '/admin/bike-store', to: 'items#index'
   post '/cart_items', to: 'cart_items#create'
   post 'cart_items/:id/add', to: 'cart_items#add_item'
   post 'cart_items/:id/decrease', to: 'cart_items#decrease_item'
