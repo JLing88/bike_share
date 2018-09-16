@@ -18,9 +18,10 @@ class Station < ApplicationRecord
     Trip.where(end_station_id: station.id).count
   end
 
-  def most_freq_destination(station)
+  def most_freq_destination
     #most frequent destination FROM this Station
-
+    id = (Trip.where(start_station_id: self.id).group(:end_station_id).order("count_all DESC").count).keys.first
+    Station.find(id)
   end
 
 end

@@ -119,7 +119,7 @@ describe Station, type: :model do
     end
 
     describe '#most_freq_destination' do
-      xit 'returns most frequent destination station from that start station' do
+      it 'returns most frequent destination station from that start station' do
         station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
         station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
         station_3 = Station.create!(name: 'Baker', dock_count: 5, city: 'Denver', installation_date: Time.now)
@@ -128,7 +128,7 @@ describe Station, type: :model do
         trip_3 = Trip.create!(duration: 60, start_date: Time.now, start_station_id: station_1.id, end_date: Time.now, end_station_id: station_2.id, bike_id: 12, subscription_type: 'monthly', zip_code: 80444)
         trip_4 = Trip.create!(duration: 50, start_date: Time.now, start_station_id: station_1.id, end_date: Time.now, end_station_id: station_3.id, bike_id: 15, subscription_type: 'monthly', zip_code: 80555)
 
-        expect(station_1.most_freq_destination(station_1)).to eq(station_2.name)
+        expect(station_1.most_freq_destination).to eq(station_2)
       end
     end
   end
