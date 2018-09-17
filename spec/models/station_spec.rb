@@ -89,7 +89,7 @@ describe Station, type: :model do
                             subscription_type: 'stolen',
                             zip_code: 90210
                           )
-      expect(Trip.most_ending_trips).to eq(station_3)
+      expect(Trip.most_ending_trips).to eq(station_4)
     end
   end
 
