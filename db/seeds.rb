@@ -58,7 +58,7 @@ if Rails.env == 'development' || Rails.env == 'production'
                  'https://i.pinimg.com/originals/e9/1a/49/e91a49f7be6c9dc65c0c5fa2c197fecb.jpg',
                  'http://www.funnykittensite.com/pictures/Bike_Basket_Of_Kitten.jpg']
   20.times do |num|
-    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: image_array.shuffle.first)
+    Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0).round(2), image_url: image_array.shuffle.first)
   end
 
   User.create!(username: "Admin", password: "111111", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
