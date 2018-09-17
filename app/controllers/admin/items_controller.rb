@@ -33,6 +33,14 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+
+    flash[:success] = "Item deleted."
+    redirect_to admin_bike_store_path
+  end
+
   private
 
   def item_params
