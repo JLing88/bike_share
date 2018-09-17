@@ -41,7 +41,7 @@ class Trip < ApplicationRecord
 
   def self.most_ending_trips
     var = Station.joins("join trips on stations.id = trips.end_station_id")
-                  .order("count_all asc")
+                  .order("count_all desc")
                   .limit(1)
                   .group(:id)
                   .count
