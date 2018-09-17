@@ -10,7 +10,7 @@
     </div>
     <div>
     <%= f.label :start_station_id %>
-    <%= f.collection_select :start_station_id, Station.all, :id, :name %>
+    <%= f.collection_select :start_station_id, Station.all.order(:name), :id, :name %>
     </div>
     <div>
     <%= f.label :end_date %>
@@ -18,7 +18,7 @@
     </div>
     <div>
     <%= f.label :end_station_id%>
-    <%= f.collection_select :end_station_id, Station.all, :id, :name %>
+    <%= f.collection_select :end_station_id, Station.all.order(:name), :id, :name %>
     </div>
     <div>
     <%= f.label :bike_id %>
