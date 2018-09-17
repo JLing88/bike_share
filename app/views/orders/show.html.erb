@@ -12,7 +12,7 @@
   <th>Subtotal</th>
   <% @order_items.each do |order_item| %>
   <tr>
-    <td><%= order_item.item.title %></td>
+    <td><%= link_to "#{order_item.item.title}", item_path(order_item.item) %></td>
     <td><%= order_item.quantity %></td>
     <td><%= number_to_currency(order_item.subtotal) %></td>
   </tr>
