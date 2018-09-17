@@ -61,7 +61,7 @@ if Rails.env == 'development' || Rails.env == 'production'
     Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0), image_url: image_array.shuffle.first)
   end
 
-  User.create!(username: "Boss", password: "555555", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
+  User.create!(username: "Admin", password: "111111", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
 
   ActiveRecord::Base.connection.reset_pk_sequence!('stations')
   ActiveRecord::Base.connection.reset_pk_sequence!('trips')
