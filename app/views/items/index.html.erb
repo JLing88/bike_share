@@ -32,7 +32,7 @@
       <a href="#" class="btn btn-primary"><% if item.retired? %>
         <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
       <% else %>
-        <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
+        <li id="item-<%= item.id %>"><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
       <% end %>
       </a>
     </td>
