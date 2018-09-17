@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
       session[:cart].each do |item_id, quantity|
         item = Item.find(item_id)
         item.order_items.create!(item_id: item.id, order_id: order.id, quantity: quantity)
+        cart = Cart.new(session[:cart]= nil)
       end
         if order.save
           flash[:notice] = "Successfully submitted your order totaling $#{order.total.round(2)}"
