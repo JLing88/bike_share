@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: "dashboard#show"
   get '/stations-dashboard', to: "stations_dashboard#show"
   get '/trips-dashboard', to: "trips_dashboard#show"
+  get '/conditions-dashboard', to: "conditions_dashboard#show"
 
   get '/:id', to: 'stations#show'
 

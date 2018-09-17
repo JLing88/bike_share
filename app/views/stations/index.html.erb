@@ -1,5 +1,7 @@
 <h1>All Stations</h1>
 
+<button type="button" class="btn btn-warning"><%= link_to "Go to Stations Dashboard", stations_dashboard_path%></button>
+
 <% if current_admin? %>
 <%= link_to "Add New Station", new_admin_station_path %>
 <% end  %>

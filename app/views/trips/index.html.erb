@@ -1,5 +1,7 @@
 <h1>All Trips</h1>
 
+<button type="button" class="btn btn-warning"><%= link_to "Go to Trips Dashboard", trips_dashboard_path%></button>
+
 <% if current_admin? %>
 <%= link_to "Add New Trip", new_admin_trip_path %>
 <% end  %>

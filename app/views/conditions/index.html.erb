@@ -1,5 +1,7 @@
 <h1>All Conditions</h1>
 
+<button type="button" class="btn btn-warning"><%= link_to "Go to Conditions Dashboard", conditions_dashboard_path%></button>
+
 <% if current_admin? %>
 <%= link_to "Add New Condition", new_admin_condition_path %>
 <% end  %>
