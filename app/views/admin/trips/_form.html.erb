@@ -2,7 +2,7 @@
   <%= form_for [:admin, @trip] do |f| %>
     <div>
     <%= f.label :duration%>
-    <%= f.number_field :duration %>
+    <%= f.number_field :duration, min: '0' %>
     </div>
     <div>
     <%= f.label :start_date %>
