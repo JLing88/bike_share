@@ -1,5 +1,10 @@
 <h1>Order #<%= @order.id %></h1>
 
+<ul>
+  <li> Name: <%= @user.name %>
+  <li> Address: <%= @user.address %></li>
+</ul>
+
 <p>Status: <%= @order.status %></p>
 <p>Order Date: <%= @order.created_at.strftime("%m-%d-%Y %H:%M") %></p>
 <% if @order.status == "completed" || @order.status == "cancelled" %>

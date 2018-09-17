@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   def show
     if validate_user_resource?
+      @user = current_user
       @order = Order.find(params[:id])
       @order_items = OrderItem.where(order_id: @order.id)
     else
