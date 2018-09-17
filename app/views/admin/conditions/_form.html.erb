@@ -18,19 +18,19 @@
     </div>
     <div>
     <%= f.label :mean_humidity %>
-    <%= f.number_field :mean_humidity %>
+    <%= f.number_field :mean_humidity, min: '0' %>
     </div>
     <div>
     <%= f.label :mean_visibility %>
-    <%= f.number_field :mean_visibility %>
+    <%= f.number_field :mean_visibility, min: '0' %>
     </div>
     <div>
     <%= f.label :mean_windspeed %>
-    <%= f.number_field :mean_windspeed %>
+    <%= f.number_field :mean_windspeed, min: '0' %>
     </div>
     <div>
     <%= f.label :precipitation %>
-    <%= f.number_field :precipitation %>
+    <%= f.number_field :precipitation, min: '0' %>
     </div>
     <div>
     <%= f.submit %>

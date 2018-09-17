@@ -34,8 +34,8 @@ describe 'as a admin' do
         fill_in :trip_duration, with: 50
         fill_in :trip_start_date, with: Time.now
         fill_in :trip_end_date, with: Time.now
-        fill_in :trip_start_station_id, with: 2
-        fill_in :trip_end_station_id, with: 2
+        select station_2.name, from: :trip_start_station_id
+        select station_2.name, from: :trip_end_station_id
         fill_in :trip_subscription_type, with: 'weekly'
         fill_in :trip_bike_id, with: 377
         fill_in :trip_zip_code, with: 94040

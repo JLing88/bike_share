@@ -15,9 +15,9 @@ describe "As an admin they visit the trip_index_path" do
 
         fill_in :trip_duration, with: 66
         fill_in :trip_start_date, with: "2018-10-3"
-        fill_in :trip_start_station_id, with: 1
+        select station.name, from: :trip_start_station_id
         fill_in :trip_end_date, with: "2018-10-4"
-        fill_in :trip_end_station_id, with: 1
+        select station.name, from: :trip_end_station_id
         fill_in :trip_bike_id, with: 234
         fill_in :trip_subscription_type, with: "monthly"
         fill_in :trip_zip_code, with: 94040
