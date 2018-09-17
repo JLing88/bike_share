@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :require_user
   helper_method :current_admin?
   helper_method :validate_user_resource?
+  helper_method :cart
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
