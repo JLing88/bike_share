@@ -19,6 +19,8 @@ describe 'As a registered user' do
       click_on ("##{@order_1.id}")
 
       expect(current_path).to eq(order_path(@order_1))
+      expect(page).to have_content("#{@user.first_name} #{@user.last_name}")
+      expect(page).to have_content(@user.address)
       expect(page).to have_content(@order_1.status)
       expect(page).to have_content(@item.title)
       expect(page).to have_content(@order_item_1.quantity)
