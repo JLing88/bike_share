@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :edit, :update]
   end
 
-  resources :items, only: [:show]
+  resources :items, only: [:show, :edit, :update]
 
   get '/bike-store', to: 'items#index'
   get '/admin/bike-store', to: 'items#index'
