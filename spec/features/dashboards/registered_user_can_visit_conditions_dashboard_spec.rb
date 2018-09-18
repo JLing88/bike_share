@@ -16,6 +16,8 @@ describe 'As a registered user' do
       trip_10 = Trip.create!(duration: 60, start_date: DateTime.parse('2018-04-29'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
       trip_11 = Trip.create!(duration: 60, start_date: DateTime.parse('2018-03-19'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
       trip_12 = Trip.create!(duration: 60, start_date: DateTime.parse('2018-03-19'), start_station_id: station_1.id, end_date: Time.now, end_station_id: station_1.id, bike_id: 1, subscription_type: 'monthly', zip_code: 80222)
+      user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       condition_1 = Condition.create!(date: DateTime.parse('2018-8-29'),
                                       max_temp: 85.0,
@@ -71,6 +73,7 @@ describe 'As a registered user' do
                                       mean_windspeed: 12.0,
                                       precipitation: 5.0
                                     )
+
       visit conditions_dashboard_path
 
       expect(page).to have_content('Average Number of Rides between 40-50 degrees F: 0.17')
