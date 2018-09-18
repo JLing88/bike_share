@@ -5,7 +5,7 @@ describe "As a registered user" do
     it 'they should show longest and shortest ride' do
       user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      
+
       station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
       station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
       trip_1 = Trip.create!(duration: 60,
@@ -27,7 +27,7 @@ describe "As a registered user" do
                             zip_code: 90210
                           )
       trip_3 = Trip.create!(duration: 55,
-                            start_date: Date.parse("2017-10-29"),
+                            start_date: Date.parse("2017-08-25"),
                             start_station_id: station_2.id,
                             end_date: Date.parse("2017-11-29"),
                             end_station_id: station_2.id,
@@ -35,6 +35,24 @@ describe "As a registered user" do
                             subscription_type: 'stolen',
                             zip_code: 90210
                           )
+    condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                    max_temp: 12.3,
+                                    mean_temp: 56.0,
+                                    min_temp:1.0,
+                                    mean_humidity: 30.0,
+                                    mean_visibility: 3.0,
+                                    mean_windspeed: 10.0,
+                                    precipitation: 2.0
+                                  )
+    condition_2 = Condition.create!(date: Date.parse('2017-08-25'),
+                                    max_temp: 22.1,
+                                    mean_temp: 45.0,
+                                    min_temp:5.0,
+                                    mean_humidity: 70.0,
+                                    mean_visibility: 14.0,
+                                    mean_windspeed: 12.5,
+                                    precipitation: 5.0
+                                  )
 
       visit trips_dashboard_path
 

@@ -18,5 +18,7 @@ class TripsDashboardController < ApplicationController
     @least_busy_day = Trip.least_busy_day
     @monthly_break_down = Trip.rides_per_month
     @yearly_breakdown = Trip.year_totals
+    @busiest_condition = Trip.conditions_for_busiest_date
+    @least_busy_condition = Trip.conditions_for_least_busy_date
   end
 end
