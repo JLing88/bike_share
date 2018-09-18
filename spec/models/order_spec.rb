@@ -27,7 +27,20 @@ describe Order, type: :model do
     end
 
     describe '#by_status' do
-      
+      it 'returns hash of statuses with number of each' do
+        user = User.create!(username: "Nick", password: "Nick", address: '123 Main street', first_name: 'Rad', last_name: 'Mobile')
+        item = Item.create!(title: 'item 1', description: 'cool thing', price: 100, image_url: 'https://pbs.twimg.com/profile_images/507251035929190400/BDUL3Uzt_400x400.png')
+        order = Order.create(status: 'ordered', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'ordered', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'completed', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'completed', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'paid', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'paid', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'cancelled', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+        order = Order.create(status: 'cancelled', user_id: user.id, created_at: Time.now, updated_at: Time.now)
+
+        expect(Order.by_status).to eq({"ordered" => 2, "completed" => 2, "paid" => 2, "cancelled" => 2})
+      end
     end
   end
 end
