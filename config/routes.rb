@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :edit, :update]
   end
 
-  resources :items, only: [:show]
+  resources :items, only: [:show, :edit, :update]
 
   get '/admin/dashboard', to: 'admin/dashboards#index'
   get '/bike-store', to: 'items#index'
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: "dashboard#show"
   get '/stations-dashboard', to: "stations_dashboard#show"
   get '/trips-dashboard', to: "trips_dashboard#show"
+  get '/conditions-dashboard', to: "conditions_dashboard#show"
 
   get '/:id', to: 'stations#show'
 

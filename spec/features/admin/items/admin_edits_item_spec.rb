@@ -15,9 +15,7 @@ describe 'admin edits item' do
     it 'displays each item with edit link' do
       visit admin_bike_store_path
 
-      within(".item_#{@item_1.id}") do
-        expect(page).to have_link("Edit")
-      end
+      expect(page).to have_link("Edit")
     end
 
     it 'displays edited item back on the index page' do
@@ -27,9 +25,7 @@ describe 'admin edits item' do
       expect(page).to have_content(@item_1.description)
       expect(page).to have_content(@item_1.price)
 
-      within(".item_#{@item_1.id}") do
-        click_on("Edit")
-      end
+      first(:link, "Edit").click
 
       expect(current_path).to eq(edit_admin_item_path(@item_1))
 

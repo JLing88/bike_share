@@ -19,11 +19,11 @@ describe "User visits stations index" do
       expect(page).to have_content(station_1.name)
       expect(page).to have_content(station_1.dock_count)
       expect(page).to have_content(station_1.city)
-      expect(page).to have_content(station_1.installation_date)
+      expect(page).to have_content(station_1.installation_date.strftime("%m-%d-%Y"))
       expect(page).to have_content(station_2.name)
       expect(page).to have_content(station_2.dock_count)
       expect(page).to have_content(station_2.city)
-      expect(page).to have_content(station_2.installation_date)
+      expect(page).to have_content(station_2.installation_date.strftime("%m-%d-%Y"))
 
       expect(page).to have_link("Edit")
       expect(page).to have_link("Delete")

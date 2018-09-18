@@ -39,4 +39,17 @@ describe Cart do
       expect(cart.data).to eq({item.id.to_s => 2})
     end
   end
+  context '.count_items' do
+    it 'returns the total count of items in cart' do
+      item_1 = Item.create(title: 'item 1', description: 'cool thing 1', price: 300, image_url: 'test.jpg')
+      item_2 = Item.create(title: 'item 2', description: 'cool thing 2', price: 100, image_url: 'test.jpg')
+      cart = Cart.new(nil)
+      cart.add_item(item_1)
+      cart.add_item(item_1)
+      cart.add_item(item_1)
+      cart.add_item(item_2)
+
+      expect(cart.count_items).to eq(4)
+    end
+  end
 end

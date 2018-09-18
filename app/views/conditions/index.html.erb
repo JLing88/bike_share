@@ -1,22 +1,47 @@
 <h1>All Conditions</h1>
 
+<button type="button" class="btn btn-warning"><%= link_to "Go to Conditions Dashboard", conditions_dashboard_path%></button>
+
 <% if current_admin? %>
 <%= link_to "Add New Condition", new_admin_condition_path %>
-<% end %>
+<% end  %>
 
-<% @conditions.each do |c| %>
-  <ul>
-    <h3><%= link_to "Date: #{c.date}", condition_path(c) %></h3>
-    <li>Maximum Temperature: <%= c.max_temp%></li>
-    <li>Mean Temperature: <%= c.mean_temp%></li>
-    <li>Minimum Temperature: <%= c.min_temp%></li>
-    <li>Mean Humidity: <%= c.mean_humidity%></li>
-    <li>Mean Visibility: <%= c.mean_visibility%></li>
-    <li>Mean Windspeed: <%= c.mean_windspeed%></li>
-    <li>Precipitation: <%= c.precipitation%></li>
-    <% if current_admin? %>
-    <li><%= link_to "Edit", edit_admin_condition_path(c) %></li>
-    <li><%= link_to "Delete", admin_condition_path(c), method: "delete" %></li>
-    <% end %>
-  </ul>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Max Temp</th>
+      <th scope="col">Mean Temp</th>
+      <th scope="col">Min Temp</th>
+      <th scope="col">Mean Humidity</th>
+      <th scope="col">Mean Visibility</th>
+      <th scope="col">Mean Windspeed</th>
+      <th scope="col">Precipitation</th>
+      <% if current_admin?  %>
+        <th></th>
+        <th></th>
+        <% end %>
+    </tr>
+  </thead>
+  <% @conditions.each do |c| %>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= link_to "#{c.date.strftime("%m-%d-%Y")}", condition_path(c) %></th>
+      <td><%= c.max_temp %></td>
+      <td><%= c.mean_temp %></td>
+      <td><%= c.min_temp %></td>
+      <td><%= c.mean_humidity %></td>
+      <td><%= c.mean_visibility %></td>
+      <td><%= c.mean_windspeed %></td>
+      <td><%= c.precipitation %></td>
+      <% if current_admin? %>
+      <td><%= link_to "Edit", edit_admin_condition_path(c) %></td>
+      <td><%= link_to "Delete", admin_condition_path(c), method: "delete" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<%= paginate @conditions %>

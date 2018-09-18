@@ -1,6 +1,8 @@
 class ConditionsController < ApplicationController
+
+
   def index
-    @conditions = Condition.all
+    @conditions = Condition.page(params[:page]).per(30)
   end
 
   def show

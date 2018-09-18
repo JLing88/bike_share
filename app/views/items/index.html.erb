@@ -1,4 +1,5 @@
 <h1>Bike Accessories</h1>
+<<<<<<< HEAD
 <% if current_admin? %>
   <%= link_to "Add New Bike Accessory", new_admin_item_path %>
 <% end %>
@@ -13,10 +14,64 @@
         <li><%= link_to "Edit", edit_admin_item_path(item)%></li>
       <% end %>
       <% if item.retired? %>
+=======
+
+<% if current_admin? %>
+<%= link_to "Add New Bike Accessory", new_admin_item_path %>
+<% end  %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+      <% if current_admin?  %>
+        <th></th>
+        <th></th>
+        <% end %>
+    </tr>
+  </thead>
+  <% @items.each do |item| %>
+
+  <tbody>
+    <tr>
+      <th scope="row"><%= link_to "#{item.title}", item_path(item) %></th>
+      <td>
+        <img><%= image_tag("#{item.image_url}" , size: "50")%></img>
+      </td>
+      <td><%= item.description %></td>
+      <td><%= number_to_currency(item.price) %></td>
+      <td>
+      <a href="#"><% if item.retired? %>
+>>>>>>> 3f3457d8fe3c66f74b19452cc269e35681241d9a
         <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
       <% else %>
-        <li><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
+        <li id="item-<%= item.id %>"><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
       <% end %>
-    </ul>
-  </div>
-<% end %>
+      </a>
+    </td>
+      <% if current_admin? %>
+      <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
+      <% end %>
+      <td>
+        <div class='form'>
+          <%= form_for [:admin, item] do |f| %>
+          <div>
+            <%= f.label :status %>
+            <%= f.select :status, options_for_select([["active"],["retired"]]) %>
+          </div>
+        <td>
+          <div>
+            <%= f.submit "Submit"%>
+          </div>
+        </td>
+            <% end %>
+        </div>
+    </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

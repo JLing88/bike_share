@@ -3,3 +3,47 @@
 <p>Average Ride Duration: <%= @avg_duration %></p>
 <p>Longest Ride: <%= "Longest Ride: #{@longest_trip.duration} minutes from #{@longest_trip.start_station.name} to #{@longest_trip.end_station.name} on #{@longest_trip.start_date}" %></p>
 <p>Shortest Ride: <%= "Shortest Ride: #{@shortest_trip.duration} minutes from #{@shortest_trip.start_station.name} to #{@shortest_trip.end_station.name} on #{@shortest_trip.start_date}" %></p>
+<p>Station Most Used As A Starting Point: <%= "#{@most_started_station.name}" %></p>
+<p>Station Most Used As An Ending Point: <%= "#{@most_ended_station.name}" %></p>
+<p>Most Ridden Bike: <%= "Bike Id - #{@most_ridden_bike}"%></p>
+<p>Least Ridden Bike: <%= "Bike Id - #{@least_ridden_bike}"%></p>
+<p>Number of subscribers: <%= "#{@subscription_count} Subscribers" %> </p>
+<p>Number of customers: <%= "#{@customer_count} Customers" %> </p>
+<p>Percentage of Subscribers: <%= "#{@subscription_percentage}%" %></p>
+<p>Percentage of Customers: <%= "#{@customer_percentage}%" %></p>
+<p>Busiest Day: <%= @busiest_day %></p>
+<p>Least Busy Day: <%= @least_busy_day %></p>
+<table>
+<thead>
+  <tr>
+    <th scope="row">Month</th>
+    <th scope="row">Rides</th>
+  </tr>
+</thead>
+  <% @monthly_break_down.each do |date, trip_count| %>
+<tbody>
+  <tr>
+    <td><%= date.month %></td>
+    <td><%= trip_count %></td>
+  </tr>
+</tbody>
+    <% end %>
+</table>
+<table>
+<thead>
+  <tr>
+    <th scope="row">Year</th>
+    <th scope="row">Rides</th>
+  </tr>
+</thead>
+  <% @yearly_breakdown.each do |date, trip_count| %>
+<tbody>
+  <tr>
+    <td><%= date.year %></td>
+    <td><%= trip_count %></td>
+  </tr>
+</tbody>
+    <% end %>
+</table>
+
+<button type="button" class="btn btn-warning"><%= link_to "Back to All Trips", trips_path%></button>

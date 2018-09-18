@@ -134,7 +134,7 @@ describe Trip, type: :model do
                             )
         expect(Trip.most_starting_trips).to eq(station_4)
       end
-      it 'returns the bike with the most trips' do
+      it 'returns the bike with the most trips or least trips' do
         station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
         station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
         trip_1 = Trip.create!(duration: 60,
@@ -168,12 +168,330 @@ describe Trip, type: :model do
                               start_date: Time.parse("2017-10-29"),
                               start_station_id: station_4.id,
                               end_date: Time.parse("2017-11-29"),
-                              end_station_id: station_4.id,                    bike_id: 2,
+                              end_station_id: station_4.id,
+                              bike_id: 2,
                               subscription_type: 'stolen',
                               zip_code: 90210
                               )
 
         expect(Trip.most_ridden_bike).to eq(2)
+        expect(Trip.least_ridden_bike).to eq(1)
+      end
+      it 'returns the total number of rides for bike' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'monthly',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                              )
+        expect(Trip.total_rides_for_bike(2)).to eq(3)
+          end
+      it 'returns the date with the highest number of trips and amount of trips' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'monthly',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-11-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,                    bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                              )
+
+        expect(Trip.busiest_day).to eq("2017-10-29")
+        expect(Trip.least_busy_day).to eq("2017-11-29")
+      end
+      it 'returns total number of trips for date' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'monthly',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-11-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'stolen',
+                              zip_code: 90210
+                              )
+        expect(Trip.total_trips_for_date(trip_4.start_date)).to eq(1)
+        expect(Trip.total_trips_for_date(trip_3.start_date)).to eq(3)
+      end
+      it 'it can calculate total number of trips' do
+      station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+      station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+      trip_1 = Trip.create!(duration: 60,
+                            start_date: Time.parse("2017-10-29"),
+                            start_station_id: station_3.id,
+                            end_date: Time.parse("2017-10-29"),
+                            end_station_id: station_4.id,
+                            bike_id: 1,
+                            subscription_type: 'monthly',
+                            zip_code: 80222
+                          )
+      trip_2 = Trip.create!(duration: 50,
+                            start_date: Time.parse("2017-10-29"),
+                            start_station_id: station_4.id,
+                            end_date: Time.parse("2017-10-29"),
+                            end_station_id: station_3.id,
+                            bike_id: 2,
+                            subscription_type: 'stolen',
+                            zip_code: 90210
+                          )
+      trip_3 = Trip.create!(duration: 55,
+                            start_date: Time.parse("2017-10-29"),
+                            start_station_id: station_4.id,
+                            end_date: Time.parse("2017-10-29"),
+                            end_station_id: station_4.id,
+                            bike_id: 2,
+                            subscription_type: 'stolen',
+                            zip_code: 90210
+                          )
+      trip_4 = Trip.create!(duration: 55,
+                            start_date: Time.parse("2017-11-29"),
+                            start_station_id: station_4.id,
+                            end_date: Time.parse("2017-11-29"),
+                            end_station_id: station_4.id,
+                            bike_id: 2,
+                            subscription_type: 'stolen',
+                            zip_code: 90210
+                            )
+
+      expect(Trip.total_trips).to eq(4)
+      end
+      it 'should calculate subscriber base by percentage' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'subscriber',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'subscriber',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-11-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                              )
+
+        expect(Trip.subscription_count).to eq(2)
+        expect(Trip.customer_count).to eq(2)
+        expect(Trip.percentage_subscribers).to eq(50.0)
+        expect(Trip.percentage_customers).to eq(50)
+      end
+      it 'get total trips for month' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'subscriber',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'subscriber',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-11-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                              )
+                              trip_5 = Trip.create!(duration: 55,
+                                                    start_date: Time.parse("2016-10-29"),
+                                                    start_station_id: station_4.id,
+                                                    end_date: Time.parse("2016-10-29"),
+                                                    end_station_id: station_4.id,
+                                                    bike_id: 2,
+                                                    subscription_type: 'customer',
+                                                    zip_code: 90210
+                                                    )
+
+        expect(Trip.rides_for_single_month(["2017-10-01", "2017-10-31"])).to eq(3)
+        hash = Trip.rides_per_month
+        expect(hash.first[1]).to eq(3)
+      end
+      it 'should return the total for years' do
+        station_3 = Station.create!(name: 'Wads', dock_count: 20, city: 'Lakewood', installation_date: Time.now)
+        station_4 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
+        trip_1 = Trip.create!(duration: 60,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_3.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 1,
+                              subscription_type: 'subscriber',
+                              zip_code: 80222
+                            )
+        trip_2 = Trip.create!(duration: 50,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_3.id,
+                              bike_id: 2,
+                              subscription_type: 'subscriber',
+                              zip_code: 90210
+                            )
+        trip_3 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                            )
+        trip_4 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2017-11-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2017-11-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                              )
+        trip_5 = Trip.create!(duration: 55,
+                              start_date: Time.parse("2016-10-29"),
+                              start_station_id: station_4.id,
+                              end_date: Time.parse("2016-10-29"),
+                              end_station_id: station_4.id,
+                              bike_id: 2,
+                              subscription_type: 'customer',
+                              zip_code: 90210
+                              )
+          expect(Trip.year_totals.values[0]).to eq(1)
+          expect(Trip.year_totals.values[1]).to eq(4)
       end
     end
   end
