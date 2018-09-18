@@ -15,9 +15,13 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :create, :edit, :update, :destroy]
     resources :items, only: [:new, :create, :edit, :update]
   end
+  resources :items, only: [:show, :edit, :update]
 
-  get '/bike-store', to: 'items#index'
+
+  get '/admin/dashboard', to: 'admin/dashboards#index'
   get '/admin/bike-store', to: 'items#index'
+  
+  get '/bike-store', to: 'items#index'
   post '/cart_items', to: 'cart_items#create'
   post 'cart_items/:id/add', to: 'cart_items#add_item'
   post 'cart_items/:id/decrease', to: 'cart_items#decrease_item'

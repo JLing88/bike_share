@@ -9,7 +9,7 @@
 
   <%= stylesheet_link_tag "application", media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  
+
   </head>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -42,9 +42,15 @@
           <%= link_to "Sign In", login_path, class: "nav-link" %>
         </li>
         <% else %>
-        <li class="nav-item">
-          <%= link_to "Logged in as: #{current_user.username}", dashboard_path, class: "nav-link" %>
-        </li>
+          <% if current_admin? %>
+            <li class="nav-item">
+              <%= link_to "Logged in as Admin User: #{current_user.username}", dashboard_path, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Logged in as: #{current_user.username}", dashboard_path, class: "nav-link" %>
+            </li>
+          <% end %>
         <li class="nav-item">
           <%= link_to "Log Out", logout_path, class: "nav-link" %>
         </li>
