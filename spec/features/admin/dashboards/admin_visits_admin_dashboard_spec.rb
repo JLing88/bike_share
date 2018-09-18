@@ -27,7 +27,6 @@ describe 'as an admin' do
       order_item2 = OrderItem.create!(item_id: item2.id, order_id: order1.id, quantity: 10)
 
       visit admin_dashboard_path
-      save_and_open_page
 
       expect(page).to have_content("Order-#{order1.id}")
       within("#order-#{order1.id}") do
