@@ -25,5 +25,9 @@ describe Order, type: :model do
         expect(order.total).to eq(500)
       end
     end
+
+    describe '#by_status' do
+      
+    end
   end
 end
