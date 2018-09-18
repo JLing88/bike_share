@@ -11,8 +11,24 @@
 <p>Number of customers: <%= "#{@customer_count} Customers" %> </p>
 <p>Percentage of Subscribers: <%= "#{@subscription_percentage}%" %></p>
 <p>Percentage of Customers: <%= "#{@customer_percentage}%" %></p>
-<p>Busiest Day: <%= @busiest_day %></p>
-<p>Least Busy Day: <%= @least_busy_day %></p>
+<p>Busiest Day: <%= @busiest_condition.date %></p>
+<p style="margin-left: 40px">Conditions for <%= @busiest_condition.date %></p>
+<p style="margin-left: 40px"> Maximum Temperature: <%= @busiest_condition.max_temp %></p>
+<p style="margin-left: 40px"> Mean Temperature: <%= @busiest_condition.mean_temp %></p>
+<p style="margin-left: 40px"> Minimum Temperature: <%= @busiest_condition.min_temp %></p>
+<p style="margin-left: 40px"> Mean Humidity: <%= @busiest_condition.mean_humidity %></p>
+<p style="margin-left: 40px"> Mean Visibility: <%= @busiest_condition.mean_visibility %></p>
+<p style="margin-left: 40px"> Mean Windspeed: <%= @busiest_condition.mean_windspeed %></p>
+<p style="margin-left: 40px"> Preciptiation: <%= @busiest_condition.precipitation %></p>
+<p>Least Busy Day: <%= @least_busy_condition.date %></p>
+<p style="margin-left: 40px">Conditions for <%= @least_busy_condition.date %></p>
+<p style="margin-left: 40px"> Maximum Temperature: <%= @least_busy_condition.max_temp %></p>
+<p style="margin-left: 40px"> Mean Temperature: <%= @least_busy_condition.mean_temp %></p>
+<p style="margin-left: 40px"> Minimum Temperature: <%= @least_busy_condition.min_temp %></p>
+<p style="margin-left: 40px"> Mean Humidity: <%= @least_busy_condition.mean_humidity %></p>
+<p style="margin-left: 40px"> Mean Visibility: <%= @least_busy_condition.mean_visibility %></p>
+<p style="margin-left: 40px"> Mean Windspeed: <%= @least_busy_condition.mean_windspeed %></p>
+<p style="margin-left: 40px"> Preciptiation: <%= @least_busy_condition.precipitation %></p>
 <table>
 <thead>
   <tr>
