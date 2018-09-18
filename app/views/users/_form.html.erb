@@ -1,0 +1,33 @@
+<% if current_user && current_user.id == @user.id %>
+
+
+<div class='form'>
+  <%= form_for [current_user] do |f| %>
+    <div>
+    <%= f.label :username%>
+    <%= f.text_field :username %>
+    </div>
+    <div>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    </div>
+    <div>
+    <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    </div>
+    <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    </div>
+    <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    </div>
+    <div>
+    <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+<% end %>
