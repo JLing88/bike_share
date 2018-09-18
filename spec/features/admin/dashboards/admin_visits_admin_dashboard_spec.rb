@@ -25,6 +25,14 @@ describe 'as an admin' do
       order1 = user.orders.create!(status: "completed", created_at: Time.now, updated_at: Time.now)
       order_item = OrderItem.create!(item_id: item.id, order_id: order1.id, quantity: 5)
       order_item2 = OrderItem.create!(item_id: item2.id, order_id: order1.id, quantity: 10)
+
+      visit admin_dashboard_path
+      save_and_open_page
+
+      expect(page).to have_content("Order-#{order1.id}")
+      within("#order-#{order1.id}") do
+        expect(page).to have_content("#{order1.status}")
+      end
     end
   end
 end

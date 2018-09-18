@@ -1,20 +1,4 @@
 <h1>Bike Accessories</h1>
-<<<<<<< HEAD
-<% if current_admin? %>
-  <%= link_to "Add New Bike Accessory", new_admin_item_path %>
-<% end %>
-<% @items.each do |item| %>
-  <div class=item_<%= item.id %>>
-    <ul>
-      <li><%= link_to item.title, item_path(item)%></li>
-      <li><%= item.description %></li>
-      <li><%= number_to_currency(item.price) %></li>
-      <li><%= image_tag("#{item.image_url}" , size: "50")%></li>
-      <% if current_admin?%>
-        <li><%= link_to "Edit", edit_admin_item_path(item)%></li>
-      <% end %>
-      <% if item.retired? %>
-=======
 
 <% if current_admin? %>
 <%= link_to "Add New Bike Accessory", new_admin_item_path %>
@@ -46,7 +30,6 @@
       <td><%= number_to_currency(item.price) %></td>
       <td>
       <a href="#"><% if item.retired? %>
->>>>>>> 3f3457d8fe3c66f74b19452cc269e35681241d9a
         <li><%= button_to "Unavailable", cart_items_path(item_id: item.id), disabled: true%></li>
       <% else %>
         <li id="item-<%= item.id %>"><%= button_to "Add to Cart", cart_items_path(item_id: item.id)%></li>
