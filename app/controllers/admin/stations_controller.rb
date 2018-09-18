@@ -19,11 +19,11 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def edit
-    @station = Station.find(params[:id])
+    @station = Station.friendly.find_by(params[:name])
   end
 
   def update
-    @station = Station.find(params[:id])
+    @station = Station.friendly.find_by(params[:name])
     @station.update(station_params)
     if @station.save
       flash[:success] = "You updated #{@station.name} Station"
@@ -35,7 +35,7 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def destroy
-    station = Station.find(params[:id])
+    station = Station.friendly.find_by(params[:name])
     station.destroy
 
     flash[:success] = "Station deleted."

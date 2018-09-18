@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :stations, only: [:index]
   resources :conditions, only: [:index, :show]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   resources :trips, only: [:index, :show]
   resources :orders, only: [:new, :create, :show]
   resources :items, only: [:show, :edit, :update]
