@@ -106,5 +106,14 @@ class Trip < ApplicationRecord
     var = Trip.group("DATE_TRUNC('year', start_date)").count
   end
 
+  def self.conditions_for_least_busy_date
+    var = Condition.find_by(date:Date.parse(Trip.least_busy_day))
+    return var
+  end
+
+  def self.conditions_for_busiest_date
+    var = Condition.find_by(date: Date.parse(Trip.busiest_day))
+    return var
+  end
 
 end

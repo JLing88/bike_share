@@ -17,7 +17,7 @@ describe "As a registered user" do
                             zip_code: 80222
                           )
       trip_2 = Trip.create!(duration: 50,
-                            start_date: Date.parse("2017-10-29"),
+                            start_date: Date.parse("2017-08-29"),
                             start_station_id: station_2.id,
                             end_date: Date.parse("2017-11-29"),
                             end_station_id: station_1.id,
@@ -34,6 +34,24 @@ describe "As a registered user" do
                             subscription_type: 'stolen',
                             zip_code: 90210
                           )
+    condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                    max_temp: 12.3,
+                                    mean_temp: 56.0,
+                                    min_temp:1.0,
+                                    mean_humidity: 30.0,
+                                    mean_visibility: 3.0,
+                                    mean_windspeed: 10.0,
+                                    precipitation: 2.0
+                                  )
+    condition_2 = Condition.create!(date: Date.parse('2017-08-29'),
+                                    max_temp: 22.1,
+                                    mean_temp: 45.0,
+                                    min_temp:5.0,
+                                    mean_humidity: 70.0,
+                                    mean_visibility: 14.0,
+                                    mean_windspeed: 12.5,
+                                    precipitation: 5.0
+                                  )
 
       visit trips_dashboard_path
 
@@ -48,31 +66,58 @@ describe "As a registered user" do
       trip_1 = Trip.create!(duration: 60,
                             start_date: Date.parse("2017-10-29"),
                             start_station_id: station_1.id,
-                            end_date: Date.parse("2017-11-29"),
+                            end_date: Date.parse("2017-10-29"),
                             end_station_id: station_2.id,
                             bike_id: 1,
-                            subscription_type: 'monthly',
+                            subscription_type: 'customer',
                             zip_code: 80222
                           )
       trip_2 = Trip.create!(duration: 50,
                             start_date: Date.parse("2017-10-29"),
                             start_station_id: station_2.id,
-                            end_date: Date.parse("2017-11-29"),
+                            end_date: Date.parse("2017-10-29"),
                             end_station_id: station_1.id,
                             bike_id: 2,
-                            subscription_type: 'stolen',
+                            subscription_type: 'subscriber',
                             zip_code: 90210
                           )
       trip_3 = Trip.create!(duration: 55,
-                            start_date: Date.parse("2017-10-29"),
+                            start_date: Date.parse("2017-10-25"),
                             start_station_id: station_2.id,
-                            end_date: Date.parse("2017-11-29"),
+                            end_date: Date.parse("2017-10-25"),
                             end_station_id: station_2.id,
                             bike_id: 2,
-                            subscription_type: 'stolen',
+                            subscription_type: 'subscriber',
                             zip_code: 90210
                           )
 
+      trip_4 = Trip.create!(duration: 55,
+                            start_date: Date.parse("2017-10-29"),
+                            start_station_id: station_2.id,
+                            end_date: Date.parse("2017-10-29"),
+                            end_station_id: station_2.id,
+                            bike_id: 2,
+                            subscription_type: 'customer',
+                            zip_code: 90210
+                           )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-10-25'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
       expect(page).to have_content("Longest Ride: #{trip_1.duration} minutes from #{trip_1.start_station.name} to #{trip_1.end_station.name} on #{trip_1.start_date}")
@@ -102,7 +147,7 @@ describe "As a registered user" do
                             zip_code: 90210
                           )
       trip_3 = Trip.create!(duration: 55,
-                            start_date: Date.parse("2017-10-29"),
+                            start_date: Date.parse("2017-08-29"),
                             start_station_id: station_2.id,
                             end_date: Date.parse("2017-11-29"),
                             end_station_id: station_2.id,
@@ -120,6 +165,24 @@ describe "As a registered user" do
                             subscription_type: 'stolen',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-08-29'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
       expect(page).to have_content("Station Most Used As A Starting Point: #{station_2.name}")
@@ -131,7 +194,7 @@ describe "As a registered user" do
       station_1 = Station.create!(name: 'Wads', dock_count: 15, city: 'Lakewood', installation_date: Time.now)
       station_2 = Station.create!(name: 'Fed Center', dock_count: 10, city: 'Golden', installation_date: Time.now)
       trip_1 = Trip.create!(duration: 60,
-                            start_date: Date.parse("2017-10-29"),
+                            start_date: Date.parse("2017-08-29"),
                             start_station_id: station_1.id,
                             end_date: Date.parse("2017-11-29"),
                             end_station_id: station_2.id,
@@ -167,6 +230,24 @@ describe "As a registered user" do
                             subscription_type: 'stolen',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-08-29'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
       expect(page).to have_content("Most Ridden Bike: Bike Id - #{trip_4.bike_id}")
@@ -214,6 +295,24 @@ describe "As a registered user" do
                             subscription_type: 'customer',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-10-25'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
       expect(page).to have_content("Number of subscribers: 2 Subscribers")
@@ -263,6 +362,24 @@ describe "As a registered user" do
                             subscription_type: 'customer',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-10-25'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
       expect(page).to have_content("Busiest Day: 2017-10-29")
       expect(page).to have_content("Least Busy Day: 2017-10-25")
@@ -291,7 +408,7 @@ describe "As a registered user" do
                             zip_code: 90210
                           )
       trip_3 = Trip.create!(duration: 55,
-                            start_date: Date.parse("2017-10-25"),
+                            start_date: Date.parse("2017-08-25"),
                             start_station_id: station_2.id,
                             end_date: Date.parse("2017-10-25"),
                             end_station_id: station_2.id,
@@ -309,10 +426,28 @@ describe "As a registered user" do
                             subscription_type: 'customer',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-08-25'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
     expect(page).to have_css('table', text: '10')
-    expect(page).to have_css('table', text: '4')
+    expect(page).to have_css('table', text: '3')
     end
     it 'should display yearly breakdown of trips' do
       user = User.create!(username: "Pat", password: "test", address: '123 Main st', first_name: 'Pat', last_name: 'Rat')
@@ -338,7 +473,7 @@ describe "As a registered user" do
                             zip_code: 90210
                           )
       trip_3 = Trip.create!(duration: 55,
-                            start_date: Date.parse("2018-10-25"),
+                            start_date: Date.parse("2018-10-29"),
                             start_station_id: station_2.id,
                             end_date: Date.parse("2017-10-25"),
                             end_station_id: station_2.id,
@@ -356,6 +491,24 @@ describe "As a registered user" do
                             subscription_type: 'customer',
                             zip_code: 90210
                            )
+     condition_1 = Condition.create!(date: Date.parse('2018-10-29'),
+                                     max_temp: 12.3,
+                                     mean_temp: 56.0,
+                                     min_temp:1.0,
+                                     mean_humidity: 30.0,
+                                     mean_visibility: 3.0,
+                                     mean_windspeed: 10.0,
+                                     precipitation: 2.0
+                                   )
+     condition_2 = Condition.create!(date: Date.parse('2017-10-29'),
+                                     max_temp: 22.1,
+                                     mean_temp: 45.0,
+                                     min_temp:5.0,
+                                     mean_humidity: 70.0,
+                                     mean_visibility: 14.0,
+                                     mean_windspeed: 12.5,
+                                     precipitation: 5.0
+                                   )
       visit trips_dashboard_path
 
       expect(page).to have_css('table', text: '2017')
