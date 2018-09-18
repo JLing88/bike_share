@@ -1,0 +1,6 @@
+<% if current_user && current_user.id == @user.id %>
+<h1> Edit Contact Information for <%= @user.username %> </h1>
+<%= render partial: 'form' %>
+<% else %>
+  <%=     render file: "/public/404" %>
+<% end %>

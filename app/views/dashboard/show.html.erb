@@ -3,6 +3,7 @@
 <ul>
   <li> Name: <%= @user.name %>
   <li> Address: <%= @user.address %></li>
+  <li><%= link_to "Update My Information", edit_user_path(@user) %></li>
 </ul>
 
 <% if @user_orders %>
