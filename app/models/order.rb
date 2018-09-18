@@ -15,4 +15,8 @@ class Order < ApplicationRecord
     end
     total
   end
+
+  def self.by_status
+    Order.group(:status).count
+  end
 end
