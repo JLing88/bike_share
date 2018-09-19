@@ -61,6 +61,16 @@ if Rails.env == 'development' || Rails.env == 'production'
     Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0).round(2), image_url: image_array.shuffle.first)
   end
 
+  Order.destroy_all
+  status_array = ["ordered", "completed", "paid", "cancelled"]
+  user1 = User.create!(username: "person1", password: "111111", first_name: "firstname", last_name: "lastname", address: "place")
+  user2 = User.create!(username: "person2", password: "111111", first_name: "firstname", last_name: "lastname", address: "place")
+  user3 = User.create!(username: "person3", password: "111111", first_name: "firstname", last_name: "lastname", address: "place")
+  user_array = [user1.id, user2.id, user3.id]
+  20.times do |num|
+    Order.create!(user_id: user_array.shuffle.first, status: status_array.shuffle.first, created_at: Time.now, updated_at: Time.now)
+  end
+
   User.create!(username: "Admin", password: "111111", first_name: "firstname", last_name: "lastname", address: "place", role: 1)
 
   ActiveRecord::Base.connection.reset_pk_sequence!('stations')
