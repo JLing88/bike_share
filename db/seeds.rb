@@ -7,9 +7,15 @@ require 'csv'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Order.destroy_all
+Item.destroy_all
+Trip.destroy_all
+Condition.destroy_all
+Station.destroy_all
+OrderItem.destroy_all
 
 if Rails.env == 'development' || Rails.env == 'production'
-  Station.destroy_all
   CSV.foreach("db/csv/station.csv", headers: true, header_converters: :symbol) do |row|
     if row[:id] && row[:name] && row[:dock_count] && row[:city] && row[:installation_date]
       Station.create!(
@@ -23,7 +29,7 @@ if Rails.env == 'development' || Rails.env == 'production'
   end
 
 
-  Condition.destroy_all
+
   CSV.foreach("db/csv/conditions.csv", headers: true, header_converters: :symbol) do |row|
     if row[:date] && row[:max_temperature_f] && row[:mean_temperature_f] && row[:min_temperature_f] && row[:mean_humidity] && row[:mean_visibility_miles] && row[:mean_wind_speed_mph] && row[:precipitation_inches]
       Condition.create(
@@ -38,7 +44,6 @@ if Rails.env == 'development' || Rails.env == 'production'
     end
   end
 
-  Trip.destroy_all
   CSV.foreach("db/csv/small_trip.csv", headers: true, header_converters: :symbol) do |row|
     if row[:duration] && row[:start_date] && row[:start_station_id] && row[:end_date] && row[:end_station_id] && row[:bike_id] && row[:subscription_type] && row[:zip_code]
       Trip.create(
@@ -53,7 +58,6 @@ if Rails.env == 'development' || Rails.env == 'production'
     end
   end
 
-  Item.destroy_all
   image_array = ['https://static1.squarespace.com/static/548f8051e4b0155e1e517029/56ec47608259b54cf1f12c09/56ec47608259b54cf1f12c0a/1458325348859/6_BeerHolder+black.jpg',
                  'https://i.pinimg.com/originals/e9/1a/49/e91a49f7be6c9dc65c0c5fa2c197fecb.jpg',
                  'http://www.funnykittensite.com/pictures/Bike_Basket_Of_Kitten.jpg']
@@ -61,7 +65,6 @@ if Rails.env == 'development' || Rails.env == 'production'
     Item.create(title: "Item-#{num}", description: "Some Stuff-#{num}", price: rand(50.0...100.0).round(2), image_url: image_array.shuffle.first)
   end
 
-  Order.destroy_all
   status_array = ["ordered", "completed", "paid", "cancelled"]
   user1 = User.create!(username: "person1", password: "111111", first_name: "firstname", last_name: "lastname", address: "place")
   user2 = User.create!(username: "person2", password: "111111", first_name: "firstname", last_name: "lastname", address: "place")
