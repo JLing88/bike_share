@@ -33,5 +33,24 @@ describe 'as an admin' do
         expect(page).to have_content("#{order1.status}")
       end
     end
+
+    it 'displays total number of orders by status' do
+      user = User.create!(username: "name", password: "secret", first_name: "firstname", last_name: "lastname", address: "place")
+
+      order1 = user.orders.create!(status: "completed", created_at: Time.now, updated_at: Time.now)
+      order2 = user.orders.create!(status: "completed", created_at: Time.now, updated_at: Time.now)
+      order3 = user.orders.create!(status: "paid", created_at: Time.now, updated_at: Time.now)
+      order4 = user.orders.create!(status: "completed", created_at: Time.now, updated_at: Time.now)
+      order5 = user.orders.create!(status: "cancelled", created_at: Time.now, updated_at: Time.now)
+      order6 = user.orders.create!(status: "paid", created_at: Time.now, updated_at: Time.now)
+      order7 = user.orders.create!(status: "ordered", created_at: Time.now, updated_at: Time.now)
+
+      visit admin_dashboard_path
+
+      expect(page).to have_content("Total Orders Completed: 3")
+      expect(page).to have_content("Total Orders Paid: 2")
+      expect(page).to have_content("Total Orders Cancelled: 1")
+      expect(page).to have_content("Total Orders Ordered: 1")
+    end
   end
 end

@@ -2,6 +2,11 @@
 
 <%= link_to "See All Accessories - Go to Bike Shop", admin_bike_store_path %>
 
+<h4>Total Orders Completed: <%= @sorted_orders["completed"] %></h4>
+<h4>Total Orders Ordered: <%= @sorted_orders["ordered"] %></h4>
+<h4>Total Orders Paid: <%= @sorted_orders["paid"] %></h4>
+<h4>Total Orders Cancelled: <%= @sorted_orders["cancelled"] %></h4>
+
 <table class="table table-hover">
   <thead>
     <tr>
